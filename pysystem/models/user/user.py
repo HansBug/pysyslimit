@@ -1,8 +1,6 @@
 import os
 import pwd
 
-from .utils import _all_uid
-
 
 class SystemUser(object):
     """
@@ -89,6 +87,14 @@ class SystemUser(object):
         from .group import SystemGroup
         return SystemGroup(gid=self.gid)
 
+    @property
+    def brothers(self):
+        """
+        获取同组用户
+        :return: 同组用户
+        """
+        return self.group.users
+
     def apply(self, include_group=True):
         """
         将uid设置到当前程序
@@ -135,6 +141,14 @@ class SystemUser(object):
         return cls(name=cls.__nobody_user)
 
     @classmethod
+    def all(cls):
+        """
+        获取全部用户
+        :return: 全部用户
+        """
+        return [cls(uid=_user.pw_uid) for _user in pwd.getpwall()]
+
+    @classmethod
     def load_from_file(cls, filename):
         """
         获取文件所有者
@@ -156,11 +170,3 @@ class SystemUser(object):
             return value
         else:
             return cls(name=str(value))
-
-    @classmethod
-    def all(cls):
-        """
-        获取全部用户
-        :return: 全部用户
-        """
-        return [cls(uid=_uid) for _uid in _all_uid()]
