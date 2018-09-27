@@ -3,7 +3,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 _package_name = "pysystem"
-_version = "0.1"
+_version = "0.1.1"
 setup(
     name=_package_name,
     version=_version,
