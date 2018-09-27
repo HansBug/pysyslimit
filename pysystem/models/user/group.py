@@ -1,6 +1,8 @@
 import grp
 import os
 
+from .utils import _all_uid, _all_gid
+
 
 class SystemGroup(object):
     """
@@ -72,6 +74,15 @@ class SystemGroup(object):
             self.gid
         )
 
+    @property
+    def users(self):
+        """
+        获取该组全部用户
+        :return: 该组全部用户
+        """
+        from .user import SystemUser
+        return [_user for _user in [SystemUser(uid=_uid) for _uid in _all_uid()] if _user.gid == self.gid]
+
     @classmethod
     def current(cls):
         """
@@ -95,6 +106,14 @@ class SystemGroup(object):
         :return: nogroup用户组
         """
         return cls(name=cls.__nogroup_group)
+
+    @classmethod
+    def all(cls):
+        """
+        获取全部用户组
+        :return: 全部用户组列表
+        """
+        return [cls(gid=_gid) for _gid in _all_gid()]
 
     @classmethod
     def load_from_file(cls, filename):

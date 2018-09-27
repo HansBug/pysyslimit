@@ -1,7 +1,7 @@
 import os
 import pwd
 
-from .group import SystemGroup
+from .utils import _all_uid
 
 
 class SystemUser(object):
@@ -86,6 +86,7 @@ class SystemUser(object):
         获取用户组对象
         :return: 用户组对象
         """
+        from .group import SystemGroup
         return SystemGroup(gid=self.gid)
 
     def apply(self, include_group=True):
@@ -155,3 +156,11 @@ class SystemUser(object):
             return value
         else:
             return cls(name=str(value))
+
+    @classmethod
+    def all(cls):
+        """
+        获取全部用户
+        :return: 全部用户
+        """
+        return [cls(uid=_uid) for _uid in _all_uid()]
