@@ -1,4 +1,5 @@
 import os
+
 import pwd
 
 
@@ -11,7 +12,7 @@ class SystemUser(object):
 
     def __init__(self, uid=None, name=None):
         """
-        构造函数（uid和uname均存在时以uid优先）
+        构造函数（uid和name均存在时以uid优先）
         :param uid: 用户id
         :param name: 用户名
         """
@@ -79,21 +80,31 @@ class SystemUser(object):
         return self.__object.pw_shell
 
     @property
-    def group(self):
+    def primary_group(self):
         """
-        获取用户组对象
-        :return: 用户组对象
+        获取主用户组对象
+        :return: 主用户组对象
         """
         from .group import SystemGroup
         return SystemGroup(gid=self.gid)
 
     @property
-    def brothers(self):
+    def groups(self):
         """
-        获取同组用户
-        :return: 同组用户
+        获取全部用户组
+        :return: 全部用户组
         """
-        return self.group.users
+        from .group import SystemGroup
+        _result = []
+        for _group in SystemGroup.all():
+            _ok = False
+            for _user in _group.users:
+                if _user.uid == self.uid:
+                    _ok = True
+                    break
+            if _ok:
+                _result += [_group]
+        return _result
 
     def apply(self, include_group=True):
         """
@@ -102,8 +113,15 @@ class SystemUser(object):
         :return: None
         """
         if include_group:
-            self.group.apply()
+            self.primary_group.apply()
         os.setuid(self.uid)
+
+    def __str__(self):
+        """
+        获取字符串格式
+        :return: 字符串格式
+        """
+        return self.name
 
     def __repr__(self):
         """

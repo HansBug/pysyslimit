@@ -61,6 +61,13 @@ class SystemGroup(object):
         """
         os.setgroups([self.gid])
 
+    def __str__(self):
+        """
+        获取字符串格式
+        :return: 字符串格式
+        """
+        return self.name
+
     def __repr__(self):
         """
         获取表达形式
@@ -80,6 +87,25 @@ class SystemGroup(object):
         """
         from .user import SystemUser
         return [_user for _user in SystemUser.all() if _user.gid == self.gid]
+
+    @property
+    def members(self):
+        """
+        获取组内成员
+        :return: 组内成员
+        """
+        from .user import SystemUser
+        return [SystemUser.loads(_member) for _member in self.mem]
+
+    @property
+    def full_members(self):
+        """
+        获取全部用户
+        :return: 全部用户
+        """
+        from .user import SystemUser
+        _ids = sorted(list(set([_item.uid for _item in (self.users + self.members)])))
+        return [SystemUser(uid=_id) for _id in _ids]
 
     @classmethod
     def current(cls):
