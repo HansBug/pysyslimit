@@ -2,8 +2,10 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
+from pysystem.configs import package_version as _version
+
 _package_name = "pysystem"
-_version = "0.1.1"
+
 setup(
     name=_package_name,
     version=_version,
