@@ -15,7 +15,7 @@ def useradd(
         user_group=None, no_user_group=None,
         create_home=None, no_create_home=None,
         home_dir=None, base_dir=None, shell=None,
-        chroot_dir=None, selinux_user=None,
+        chroot_dir=None, selinux_user=None, extra_users=None,
         safe=False
 ):
     """
@@ -36,6 +36,7 @@ def useradd(
     :param shell: 用户shell
     :param chroot_dir: root入口点路径
     :param selinux_user: 删除映射用户
+    :param extra_users: 额外用户数据库
     :param safe: 安全模式（出错不抛出异常）
     :return: 创建的用户对象
     """
@@ -51,6 +52,8 @@ def useradd(
         _args += ["--create-home"]
     if no_create_home:  # 不创建同名home路径
         _args += ["--no-create-home"]
+    if extra_users:  # 额外用户
+        _args += ["--extrausers"]
 
     if uid is not None:  # 指定uid
         _args += ["--uid", uid]

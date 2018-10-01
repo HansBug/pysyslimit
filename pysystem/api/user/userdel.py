@@ -40,10 +40,9 @@ def userdel(
 
     try:
         execute_process(_args, cls=UserdelExecuteException)
-        _ok = True
     except UserdelExecuteException as _e:
         if not safe:
             raise _e
-        _ok = False
+        return False
 
-    return _ok
+    return True
