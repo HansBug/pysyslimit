@@ -10,7 +10,7 @@ def chmod(path, mod):
     :param mod: 权限
     :return: None
     """
-    return os.chmod(path, int(mod))
+    return os.chmod(path, int(FileAuthority.loads(mod)))
 
 
 def chmod_add(path, mod):
