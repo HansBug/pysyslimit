@@ -30,8 +30,13 @@ class TestSystemUser:
                 if _user.uid == user.uid:
                     flag = True
             assert flag
-        for _group in grp.getgrall():
-            if _group in _groups:
+        for __group in grp.getgrall():
+            _group = SystemGroup(__group.gr_gid)
+            found = False
+            for tGroup in _groups:
+                if _group.gid == tGroup.gid:
+                    found = True
+            if found:
                 continue
             flag = False
             for _user in _group.users:
