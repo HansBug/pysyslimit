@@ -10,7 +10,7 @@ stages:
 
 variables:
   MIN_UNITTEST_COVERAGE: 90
-  ENTRANCE_FINDER_RELEASE_URL: '${RELEASE_URL}/pysystem/pysystem-{version}-jar-with-dependencies.jar'
+  PYSYSTEM_RELEASE_URL: '${RELEASE_URL}/pysystem/pysystem-{version}-jar-with-dependencies.jar'
   TWINE_REPOSITORY: pypi
   OSS_NAME: oss
   OSS_RELEASE_ROOT: ${OSS_NAME}/releases/${CI_PROJECT_NAME}
@@ -36,8 +36,8 @@ demo_development:
   stage: demo
   script:
     - pip3 install -e .
-    - pyentrance_dir=$(pip3 show pyentrance | grep Location | cut -c 11-)/pyentrance
-      && tree -a ${pyentrance_dir}
+    - pysystem_dir=$(pip3 show pysystem | grep Location | cut -c 11-)/pysystem
+      && tree -a ${pysystem_dir}
     - cd ${DEMO_ROOT}
     - cd ..
 
@@ -45,8 +45,8 @@ demo_production:
   stage: demo
   script:
     - pip3 install .
-    - pyentrance_dir=$(pip3 show pyentrance | grep Location | cut -c 11-)/pyentrance
-      && tree -a ${pyentrance_dir}
+    - pysystem_dir=$(pip3 show pysystem | grep Location | cut -c 11-)/pysystem
+      && tree -a ${pysystem_dir}
     - cd ${DEMO_ROOT}
     - cd ..
 
