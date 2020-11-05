@@ -3,6 +3,7 @@ import os
 import pwd
 
 from pysystem.models.user.user import SystemUser
+from pysystem.models.user.group import SystemGroup
 
 
 @pytest.mark.unittest
