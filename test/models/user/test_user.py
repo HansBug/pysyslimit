@@ -20,7 +20,8 @@ class TestSystemUser:
         assert user.gecos == pwd.getpwuid(os.getuid()).pw_gecos
         assert user.dir == pwd.getpwuid(os.getuid()).pw_dir
         assert user.shell == pwd.getpwuid(os.getuid()).pw_shell
-        assert SystemGroup(user.gid) == user.primary_group
+        assert SystemGroup(user.gid).name == user.primary_group.name
+        assert SystemGroup(user.gid).gid == user.primary_group.gid
         _groups = user.groups
         for _group in _groups:
             flag = False
