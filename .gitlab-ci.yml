@@ -29,7 +29,7 @@ before_script:
   - mc config host add ${OSS_NAME} "${OSS_URL}" "${OSS_ACCESS_ID}" "${OSS_ACCESS_TOKEN}"
   - mkdir -p ${DEMO_ROOT} && cd ${DEMO_ROOT}
     && for f in $(mc ls ${OSS_DEV_ROOT}/ | awk '{print $5}'); do mc cp ${OSS_DEV_ROOT}/$f $f; done
-    && for f in *.tar.gz; do tar -zxvf $f; done
+    && for f in *.tar.gz; do sudo tar -zxvf $f; done
     && cd .. && tree -a ${DEMO_ROOT}
 
 demo_development:
