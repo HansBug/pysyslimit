@@ -1,5 +1,6 @@
 import pytest
 import os
+import grp
 import pwd
 
 from pysystem.models.user.user import SystemUser
