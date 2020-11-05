@@ -10,7 +10,7 @@ class TestSystemUser:
     def test_1(self):
         user = SystemUser(name="root")
         assert user.name == "root"
-        user = SystemUser(id=0)
+        user = SystemUser(uid=0)
         assert user.uid == 0
         user = SystemUser()
         assert user.uid == os.getuid()
