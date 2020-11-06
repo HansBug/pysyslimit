@@ -44,7 +44,7 @@ class TestSystemUser:
 
         user.apply()
         assert os.getuid() == user.uid
-        assert os.primary_group.gid in os.getgroups()
+        assert user.primary_group.gid in os.getgroups()
         assert str(user) == "root"
         assert repr(user) == r"<SystemUser root, id: 0>"
         current_user = user.current
