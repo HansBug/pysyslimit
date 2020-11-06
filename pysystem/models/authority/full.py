@@ -139,9 +139,9 @@ class FileAuthority(object):
         :param val: 权限值（十进制）
         """
         _int_value = int(val)
-        self.__user_authority.value = int(_int_value / 64)
-        self.__group_authority.value = int(_int_value / 8)
-        self.__other_authority.value = int(_int_value / 1)
+        self.__user_authority.value = int(_int_value / 64) & 7
+        self.__group_authority.value = int(_int_value / 8) & 7
+        self.__other_authority.value = int(_int_value / 1) & 7
 
     def __int__(self):
         """
