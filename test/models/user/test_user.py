@@ -62,7 +62,7 @@ class TestSystemUser:
         os.remove("./tempTest")
         assert user.loads(nobody_user).name == "nobody"
         assert user.loads(0).uid == 0
-        assert user.loads("root").name = "root"
+        assert user.loads("root").name == "root"
 
 
 if __name__ == "__main__":
