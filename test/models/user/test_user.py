@@ -58,7 +58,7 @@ class TestSystemUser:
             assert flag
         assert len(pwd.getpwall) == len(user.all)
         os.mknod("./tempTest")
-        assert user.load_from_file("./tempTest").uid = os.stat("./tempTest").st_uid
+        assert user.load_from_file("./tempTest").uid == os.stat("./tempTest").st_uid
         os.remove("./tempTest")
         assert user.loads(nobody_user).name == "nobody"
         assert user.loads(0).uid == 0
