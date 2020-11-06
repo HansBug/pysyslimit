@@ -52,15 +52,15 @@ class TestSystemUser:
         nobody_user = user.nobody
         for _user in pwd.getpwall():
             flag = False
-            for __user in user.all:
+            for __user in user.all():
                 if _user.pw_uid == __user.uid:
                     flag = True
             assert flag
-        assert len(pwd.getpwall) == len(user.all)
+        assert len(pwd.getpwall()) == len(user.all())
         os.mknod("./tempTest")
         assert user.load_from_file("./tempTest").uid == os.stat("./tempTest").st_uid
         os.remove("./tempTest")
-        assert user.loads(nobody_user).name == "nobody"
+        assert user.loads(root_user).name == "root"
         assert user.loads(0).uid == 0
         assert user.loads("root").name == "root"
 
