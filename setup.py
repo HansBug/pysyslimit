@@ -8,7 +8,7 @@ _package_name = "pysystem"
 
 here = os.path.abspath(os.path.dirname(__file__))
 meta = {}
-with open(os.path.join(here, _package_name, 'config', 'meta.py'), 'r', 'utf-8') as f:
+with open(os.path.join(here, _package_name, 'configs', 'meta.py'), 'r', 'utf-8') as f:
     exec(f.read(), meta)
 
 
