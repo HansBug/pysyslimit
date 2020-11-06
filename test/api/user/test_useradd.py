@@ -8,7 +8,7 @@ from pysystem.api.user.userdel import userdel, UserdelExecuteException
 class TestApiUserAdd:
     def test_useradd_exception(self):
         try:
-            useradd(name="newuser", uid=60000, primary_group=0, groups=[0,0,0], password="password",
+            useradd(name="newuser", uid=60000, primary_group="0", groups=[0,0,0], password="password",
                           system=True, comment="comment", user_group=True, no_user_group=True,
                           create_home=True, no_create_home=True, home_dir="./", base_dir="./",
                           shell="./", chroot_dir=True, selinux_user=True, extra_users=True, safe=False)
