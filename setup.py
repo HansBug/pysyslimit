@@ -3,8 +3,6 @@ from codecs import open
 
 from setuptools import find_packages
 
-from pysystem.configs import package_version as _version
-
 from prepare import _package_name
 
 meta = {}
