@@ -14,8 +14,6 @@ class TestSystemUser:
         assert user.name == "root"
         user = SystemUser(uid=0)
         assert user.uid == 0
-        user = SystemUser()
-        assert user.uid == os.getuid()
         assert user.passwd == pwd.getpwuid(os.getuid()).pw_passwd
         assert user.gid == pwd.getpwuid(os.getuid()).pw_gid
         assert user.gecos == pwd.getpwuid(os.getuid()).pw_gecos
@@ -43,6 +41,29 @@ class TestSystemUser:
                 if _user.uid == user.uid:
                     flag = True
             assert flag == False
+
+        user.apply()
+        assert os.getuid() == user.uid
+        assert os.primary_group.gid in os.getgroups()
+        assert str(user) == "root"
+        assert repr(user) == r"<SystemUser root, id: 0>"
+        SystemUser current_user = user.current
+        SystemUser root_user = user.root
+        SystemUser nobody_user = user.nobody
+        for _user in pwd.getpwall():
+            flag = False
+            for __user in user.all:
+                if _user.pw_uid == __user.uid:
+                    flag = True
+            assert flag
+        assert len(pwd.getpwall) == len(user.all)
+        os.mknod("./tempTest")
+        assert user.load_from_file("./tempTest").uid = os.stat("./tempTest").st_uid
+        os.remove("./tempTest")
+        assert user.loads(nobody_user).name == "nobody"
+        assert user.loads(0).uid == 0
+        assert user.loads("root").name = "root"
+
 
 if __name__ == "__main__":
     pytest.main([os.path.abspath(__file__)])
