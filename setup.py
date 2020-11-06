@@ -17,7 +17,7 @@ setup(
     version=meta['__VERSION__'],
     packages=find_packages(
         include=(_package_name, "%s.*" % _package_name)
-    )
+    ),
     author=meta['__AUTHOR__'],
     author_email=meta['__AUTHOR_EMAIL__'],
     python_requires=">=3.5"
