@@ -7,6 +7,8 @@ from pysystem.api.group.groupadd import groupadd, GroupaddExecuteException
 @pytest.mark.unittest
 class TestApiGroupDel:
     def test_groupdel_exception(self):
+        if not groupadd(name="nonexistgroup", safe=True):
+            return
         try:
             groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=False)
         except GroupdelExecuteException as _e:
