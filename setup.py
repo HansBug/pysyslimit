@@ -3,7 +3,7 @@ from codecs import open
 
 from setuptools import find_packages
 
-from prepare import _package_name
+_package_name = "pysystem"
 
 meta = {}
 with open(os.path.join(here, _package_name, 'config', 'meta.py'), 'r', 'utf-8') as f:
