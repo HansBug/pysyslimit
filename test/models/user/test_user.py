@@ -47,9 +47,9 @@ class TestSystemUser:
         assert os.primary_group.gid in os.getgroups()
         assert str(user) == "root"
         assert repr(user) == r"<SystemUser root, id: 0>"
-        SystemUser current_user = user.current
-        SystemUser root_user = user.root
-        SystemUser nobody_user = user.nobody
+        current_user = user.current
+        root_user = user.root
+        nobody_user = user.nobody
         for _user in pwd.getpwall():
             flag = False
             for __user in user.all:
