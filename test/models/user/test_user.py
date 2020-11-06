@@ -9,7 +9,7 @@ from pysystem.models.user.group import SystemGroup
 
 @pytest.mark.unittest
 class TestSystemUser:
-    def test_1(self):
+    def test_user(self):
         user = SystemUser(name="root")
         assert user.name == "root"
         user = SystemUser(uid=0)
