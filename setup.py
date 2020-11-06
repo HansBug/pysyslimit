@@ -1,5 +1,6 @@
 from distutils.core import setup
 from codecs import open
+import os
 
 from setuptools import find_packages
 
