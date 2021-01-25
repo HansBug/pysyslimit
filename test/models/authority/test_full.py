@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from pysystem.models.authority.full import FileAuthority

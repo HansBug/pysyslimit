@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from pysystem.api.user.useradd import useradd, UseraddExecuteException
@@ -7,11 +8,9 @@ from pysystem.api.user.userdel import userdel, UserdelExecuteException
 @pytest.mark.unittest
 class TestApiUserDel:
     def test_userdel_exception(self):
-        try:
+        with pytest.raises(UserdelExecuteException) as excinfo:
             userdel(name="this_user_not_exist", force=True, remove_dir=True, chroot_dir="./", selinux_user=True, safe=False)
-        except UserdelExecuteException as _e:
-            return
-        assert False
+        assert excinfo.type == UserdelExecuteException
 
     def test_userdel_safe(self):
         assert not userdel(name="this_user_not_exist", safe=True)

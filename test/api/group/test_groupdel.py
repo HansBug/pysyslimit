@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from pysystem.api.group.groupdel import groupdel, GroupdelExecuteException
@@ -7,13 +8,10 @@ from pysystem.api.group.groupadd import groupadd, GroupaddExecuteException
 @pytest.mark.unittest
 class TestApiGroupDel:
     def test_groupdel_exception(self):
-        if not groupadd(name="nonexistgroup", safe=True):
-            return
-        try:
-            groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=False)
-        except GroupdelExecuteException as _e:
-            return
-        assert False
+        if groupadd(name="nonexistgroup", safe=True):
+            with pytest.raises(GroupdelExecuteException) as excinfo:
+                groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=False)
+            assert excinfo.type == GroupdelExecuteException
 
     def test_groupDel_safe(self):
         assert not groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=True)

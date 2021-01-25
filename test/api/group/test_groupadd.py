@@ -1,34 +1,30 @@
-import pytest
 import os
-import pwd
+import pytest
 
 from pysystem.api.group.groupadd import groupadd, GroupaddExecuteException
-from pysystem.api.group.groupdel import groupdel, GroupdelExecuteException
+from pysystem.api.group.groupdel import groupdel
 
 
 @pytest.mark.unittest
 class TestApiGroupAdd:
     def test_groupadd_exception(self):
-        try:
+        with pytest.raises(GroupaddExecuteException) as excinfo:
             groupadd(name="newgroup", force=True, gid=600, non_unique=True,
-                 password="password", system=True, chroot_dir="./",
-                 extra_users=True, safe=False)
-        except GroupaddExecuteException as _e:
-            return
+                     password="password", system=True, chroot_dir="./",
+                     extra_users=True, safe=False)
         groupdel(name="newgroup")
-        assert False
+        assert excinfo.type == GroupaddExecuteException
 
     def test_groupadd_safe(self):
-        if not groupadd(name="newgroup2", safe=True):
-            return
         if groupadd(name="newgroup2", safe=True):
-            groupdel(name="newgroup2", safe=True)
-            assert False
+            if groupadd(name="newgroup2", safe=True):
+                groupdel(name="newgroup2", safe=True)
+                pytest.fail("", False)
 
     def test_groupadd_normal(self):
         if not groupadd("newgroup3").name == "newgroup3":
             groupdel(name="newgroup3", safe=True)
-            assert False
+            pytest.fail("", False)
         groupdel(name="newgroup3", safe=True)
 
 

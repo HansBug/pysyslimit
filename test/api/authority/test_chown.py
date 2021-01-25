@@ -7,7 +7,6 @@ from pysystem.api.authority.chown import chown
 
 @pytest.mark.unittest
 class TestApiAuthorityChown:
-
     def setup(self):
         os.mknod("./tempTest")
     

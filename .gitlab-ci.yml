@@ -1,4 +1,4 @@
-image: local-registry.inner.buaaoo.top/image-dev/python:3.5.2-java8
+image: local-registry.inner.buaaoo.top/image-dev/python:3.5.2
 
 stages:
   - demo

@@ -1,3 +1,4 @@
+import os
 import pytest
 
 from pysystem.configs.meta import __TITLE__
