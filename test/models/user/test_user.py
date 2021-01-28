@@ -1,10 +1,11 @@
-import pytest
 import os
+
 import grp
 import pwd
+import pytest
 
-from pysystem.models.user.user import SystemUser
 from pysystem.models.user.group import SystemGroup
+from pysystem.models.user.user import SystemUser
 
 
 @pytest.mark.unittest

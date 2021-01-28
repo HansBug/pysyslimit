@@ -1,8 +1,8 @@
 import os
+
 import pytest
 
 from pysystem.api.group.groupadd import groupadd, GroupaddExecuteException
-from pysystem.api.group.groupdel import groupdel
 
 
 @pytest.mark.unittest

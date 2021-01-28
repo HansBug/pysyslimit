@@ -1,4 +1,5 @@
 import os
+
 import pytest
 
 from pysystem.models.authority.full import FileAuthority
@@ -30,7 +31,6 @@ class TestModelsAuthorityFull:
         assert ("rw------x" & fa1).sign == "--------x"
         assert (fa1 & "rw------x").sign == "--------x"
         assert ("rw------x" - fa1).sign == "rw-------"
-
 
 
 if __name__ == "__main__":

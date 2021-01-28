@@ -1,6 +1,7 @@
-import pytest
 import os
+
 import pwd
+import pytest
 
 from pysystem.api.authority.chown import chown
 
@@ -9,17 +10,16 @@ from pysystem.api.authority.chown import chown
 class TestApiAuthorityChown:
     def setup(self):
         os.mknod("./tempTest")
-    
+
     def teardown(self):
         os.remove("./tempTest")
-
 
     def test_user_rootandnone(self):
         path = "./tempTest"
         chown(path, "root", "root")
-        assert(pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
+        assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
         chown(path)
-        assert(pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
+        assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
 
 
 if __name__ == "__main__":
