@@ -85,7 +85,7 @@ source_install_in_3.5.2:
   script:
     - pip3 install .
     - mkdir -p ${DEMO_ROOT} && cd ${DEMO_ROOT} && ls -al
-    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user's group", SystemUser.current().groups);print("current group", SystemGroup.current())'
+    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user group", SystemUser.current().groups);print("current group", SystemGroup.current())'
     - cd .. && ls -al
 
 source_install_in_3.6.3:
@@ -94,7 +94,7 @@ source_install_in_3.6.3:
   script:
     - pip3 install .
     - mkdir -p ${DEMO_ROOT} && cd ${DEMO_ROOT} && ls -al
-    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user's group", SystemUser.current().groups);print("current group", SystemGroup.current())'
+    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user group", SystemUser.current().groups);print("current group", SystemGroup.current())'
     - cd .. && ls -al
 
 source_install_in_3.7.6:
@@ -103,7 +103,7 @@ source_install_in_3.7.6:
   script:
     - pip3 install .
     - mkdir -p ${DEMO_ROOT} && cd ${DEMO_ROOT} && ls -al
-    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user's group", SystemUser.current().groups);print("current group", SystemGroup.current())'
+    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user group", SystemUser.current().groups);print("current group", SystemGroup.current())'
     - cd .. && ls -al
 
 source_install_in_3.8.1:
@@ -112,7 +112,7 @@ source_install_in_3.8.1:
   script:
     - pip3 install .
     - mkdir -p ${DEMO_ROOT} && cd ${DEMO_ROOT} && ls -al
-    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user's group", SystemUser.current().groups);print("current group", SystemGroup.current())'
+    - python3 -c 'from pysystem import *;print("current user", SystemUser.current());print("current user group", SystemUser.current().groups);print("current group", SystemGroup.current())'
     - cd .. && ls -al
 
 package_in_3.5.2:
