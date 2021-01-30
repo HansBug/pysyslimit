@@ -45,7 +45,7 @@ from pysystem import *
 
 if __name__ == "__main__":
     print("current user", SystemUser.current())
-    print("current user's group", SystemUser.current().group)
+    print("current user's group", SystemUser.current().groups)
     print("current group", SystemGroup.current())
 
 ```
