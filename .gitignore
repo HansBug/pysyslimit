@@ -2,3 +2,5 @@
 *.pyc
 __pycache__
 /test_*
+.coverage
+*.egg-info

@@ -1,6 +1,6 @@
+import grp
 import os
 
-import grp
 import pytest
 
 from pysystem.models.user.group import SystemGroup

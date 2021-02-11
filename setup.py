@@ -1,6 +1,6 @@
-from distutils.core import setup
-from codecs import open
 import os
+from codecs import open
+from distutils.core import setup
 
 from setuptools import find_packages
 
@@ -10,7 +10,6 @@ here = os.path.abspath(os.path.dirname(__file__))
 meta = {}
 with open(os.path.join(here, _package_name, 'configs', 'meta.py'), 'r', 'utf-8') as f:
     exec(f.read(), meta)
-
 
 setup(
     name=meta['__TITLE__'],

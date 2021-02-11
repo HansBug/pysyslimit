@@ -1,6 +1,6 @@
 import os
-
 import pwd
+
 import pytest
 
 from pysystem.api.authority.chown import chown

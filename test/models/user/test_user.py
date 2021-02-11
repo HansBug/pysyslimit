@@ -1,7 +1,7 @@
-import os
-
 import grp
+import os
 import pwd
+
 import pytest
 
 from pysystem.models.user.group import SystemGroup
