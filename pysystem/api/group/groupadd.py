@@ -32,7 +32,7 @@ def groupadd(
     :return: 创建的组对象
     """
     groupadd_exec = where.first('groupadd')
-    if not groupadd:
+    if not groupadd_exec:
         raise EnvironmentError('No groupadd executable found.')
     _args = [groupadd_exec]
 

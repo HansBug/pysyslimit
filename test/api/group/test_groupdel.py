@@ -1,6 +1,7 @@
 import os
 
 import pytest
+import where
 
 from pysystem.api import groupadd, groupdel, GroupdelExecuteException
 
@@ -27,6 +28,11 @@ class TestApiGroupDel:
             assert groupdel(group_name="tempGroup", safe=True)
         finally:
             groupdel('tempGroup', safe=True)
+
+    def test_groupdel_invalid(self, mocker):
+        mocker.patch.object(where, 'first', return_value=None)
+        with pytest.raises(EnvironmentError):
+            groupdel('tempGroup')
 
 
 if __name__ == "__main__":

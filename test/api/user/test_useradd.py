@@ -1,6 +1,7 @@
 import os
 
 import pytest
+import where
 
 from pysystem.api import useradd, UseraddExecuteException, userdel
 
@@ -28,12 +29,17 @@ class TestApiUserAdd:
         finally:
             userdel('newuser2', safe=True)
 
-    def test_groupadd_normal(self):
+    def test_useradd_normal(self):
         try:
             if not useradd("newuser3").name == "newuser3":
                 pytest.fail("Should not reach here")
         finally:
             userdel('newuser3', safe=True)
+
+    def test_useradd_invalid(self, mocker):
+        mocker.patch.object(where, 'first', return_value=None)
+        with pytest.raises(EnvironmentError):
+            useradd('newuser4')
 
 
 if __name__ == "__main__":

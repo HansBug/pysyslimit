@@ -1,9 +1,9 @@
 import os
 
 import pytest
+import where
 
-from pysystem.api.user.useradd import useradd
-from pysystem.api.user.userdel import userdel, UserdelExecuteException
+from pysystem.api import useradd, userdel, UserdelExecuteException
 
 
 @pytest.mark.unittest
@@ -17,12 +17,17 @@ class TestApiUserDel:
     def test_userdel_safe(self):
         assert not userdel(user_name="this_user_not_exist", safe=True)
 
-    def test_groupadd_normal(self):
+    def test_userdel_normal(self):
         try:
             useradd(user_name="this_user_not_exist", safe=True)
             assert userdel(user_name="this_user_not_exist", safe=True)
         finally:
             userdel('this_user_not_exist', safe=True)
+
+    def test_userdel_invalid(self, mocker):
+        mocker.patch.object(where, 'first', return_value=None)
+        with pytest.raises(EnvironmentError):
+            userdel('this_user_not_exist')
 
 
 if __name__ == "__main__":

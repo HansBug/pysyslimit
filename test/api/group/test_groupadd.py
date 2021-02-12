@@ -1,6 +1,7 @@
 import os
 
 import pytest
+import where
 
 from pysystem.api import groupadd, GroupaddExecuteException, groupdel
 
@@ -33,6 +34,11 @@ class TestApiGroupAdd:
                 pytest.fail("Should not reach here")
         finally:
             groupdel('newgroup3', safe=True)
+
+    def test_groupadd_invalid(self, mocker):
+        mocker.patch.object(where, 'first', return_value=None)
+        with pytest.raises(EnvironmentError):
+            groupadd('newgroup4')
 
 
 if __name__ == "__main__":
