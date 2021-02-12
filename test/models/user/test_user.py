@@ -49,8 +49,11 @@ class TestSystemUser:
         assert str(user) == "root"
         assert repr(user) == r"<SystemUser root, id: 0>"
         current_user = user.current()
+        assert current_user
         root_user = user.root()
+        assert root_user
         nobody_user = user.nobody()
+        assert nobody_user
         for _user in pwd.getpwall():
             flag = False
             for __user in user.all():

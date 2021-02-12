@@ -53,7 +53,9 @@ class TestSystemGroup:
                     flag = True
             assert flag
         current_group = group.current()
+        assert current_group
         no_group = group.nogroup()
+        assert no_group
         root_group = group.root()
         for _group in grp.getgrall():
             flag = False
