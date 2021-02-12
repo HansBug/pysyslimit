@@ -3,7 +3,33 @@ import os
 
 import pytest
 
-from pysystem.models.user.group import SystemGroup
+from pysystem.models import SystemGroup
+
+
+@pytest.mark.unittest
+class TestSystemGroupAttaches:
+    def test_groups_raw(self):
+        assert SystemGroup.current_attaches().groups() == []
+
+    def test_append(self):
+        try:
+            SystemGroup.current_attaches().append('nogroup')
+            assert set([group.name for group in SystemGroup.current_attaches().groups()]) == {'nogroup'}
+
+            SystemGroup.current_attaches().append('root')
+            assert set([group.name for group in SystemGroup.current_attaches().groups()]) == {'nogroup', 'root'}
+        finally:
+            SystemGroup.current_attaches().clear()
+
+    def test_reset(self):
+        try:
+            SystemGroup.current_attaches().reset('nogroup')
+            assert set([group.name for group in SystemGroup.current_attaches().groups()]) == {'nogroup'}
+
+            SystemGroup.current_attaches().reset('root')
+            assert set([group.name for group in SystemGroup.current_attaches().groups()]) == {'root'}
+        finally:
+            SystemGroup.current_attaches().clear()
 
 
 @pytest.mark.unittest

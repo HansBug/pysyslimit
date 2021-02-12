@@ -2,7 +2,22 @@ import grp
 import os
 
 
-class SystemGroup(object):
+# noinspection PyMethodMayBeStatic
+class SystemGroupAttaches:
+    def groups(self):
+        return [SystemGroup.loads(item) for item in os.getgroups()]
+
+    def append(self, *args):
+        os.setgroups(list(set(os.getgroups() + [SystemGroup.loads(item).gid for item in args])))
+
+    def clear(self):
+        os.setgroups([])
+
+    def reset(self, *args):
+        os.setgroups(list(set([SystemGroup.loads(item).gid for item in args])))
+
+
+class SystemGroup:
     """
     系统用户组类
     """
@@ -114,6 +129,10 @@ class SystemGroup(object):
         :return: 当前用户组
         """
         return cls()
+
+    @classmethod
+    def current_attaches(cls) -> SystemGroupAttaches:
+        return SystemGroupAttaches()
 
     @classmethod
     def root(cls):
