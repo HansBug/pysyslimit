@@ -1,3 +1,5 @@
+import where
+
 from pysystem.models import *
 from pysystem.utils import *
 
@@ -10,7 +12,7 @@ class GroupaddExecuteException(ExecuteException):
 
 
 def groupadd(
-        name,
+        group_name,
         force=False, gid=None, non_unique=False,
         password=None, system=False, chroot_dir=None,
         extra_users=False,
@@ -18,7 +20,7 @@ def groupadd(
 ):
     """
     groupadd命令
-    :param name: 组名
+    :param group_name: 组名
     :param force: 强制创建
     :param gid: 组id
     :param non_unique: 运行不唯一id
@@ -29,7 +31,10 @@ def groupadd(
     :param safe: 安全模式（出错不抛出异常）
     :return: 创建的组对象
     """
-    _args = []
+    groupadd_exec = where.first('groupadd')
+    if not groupadd:
+        raise EnvironmentError('No groupadd executable found.')
+    _args = [groupadd_exec]
 
     if force:
         _args += ["--force"]
@@ -46,8 +51,7 @@ def groupadd(
     if extra_users:
         _args += ["--extrausers"]
 
-    _args = ["groupadd"] + _args
-    _args += [name]
+    _args += [group_name]
 
     try:
         execute_process(_args, cls=GroupaddExecuteException)
@@ -56,4 +60,4 @@ def groupadd(
             raise _e
         return None
 
-    return SystemGroup(name=name)
+    return SystemGroup(name=group_name)

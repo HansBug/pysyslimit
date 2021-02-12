@@ -7,8 +7,8 @@ class SystemUser(object):
     """
     系统用户类
     """
-    __root_user = "root"
-    __nobody_user = "nobody"
+    __NOBODY = "nobody"
+    __ROOT = "root"
 
     def __init__(self, uid=None, name=None):
         """
@@ -148,7 +148,7 @@ class SystemUser(object):
         获取root用户
         :return: root用户
         """
-        return cls(name=cls.__root_user)
+        return cls(name=cls.__ROOT)
 
     @classmethod
     def nobody(cls):
@@ -156,7 +156,7 @@ class SystemUser(object):
         获取nobody用户
         :return: nobody用户
         """
-        return cls(name=cls.__nobody_user)
+        return cls(name=cls.__NOBODY)
 
     @classmethod
     def all(cls):

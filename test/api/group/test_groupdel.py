@@ -2,24 +2,31 @@ import os
 
 import pytest
 
-from pysystem.api.group.groupadd import groupadd
-from pysystem.api.group.groupdel import groupdel, GroupdelExecuteException
+from pysystem.api import groupadd, groupdel, GroupdelExecuteException
 
 
 @pytest.mark.unittest
 class TestApiGroupDel:
     def test_groupdel_exception(self):
-        if groupadd(name="nonexistgroup", safe=True):
-            with pytest.raises(GroupdelExecuteException) as excinfo:
-                groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=False)
-            assert excinfo.type == GroupdelExecuteException
+        try:
+            if groupadd(group_name="nonexistgroup", safe=True):
+                with pytest.raises(GroupdelExecuteException) as excinfo:
+                    groupdel(group_name="nonexistgroup", chroot_dir="./", force=True, safe=False)
+                assert excinfo.type == GroupdelExecuteException
+            else:
+                pytest.fail('Should not reach here.')
+        finally:
+            groupdel('nonexistgroup', safe=True)
 
-    def test_groupDel_safe(self):
-        assert not groupdel(name="nonexistgroup", chroot_dir="./", force=True, safe=True)
+    def test_groupdel_safe(self):
+        assert not groupdel(group_name="nonexistgroup", chroot_dir="./", force=True, safe=True)
 
-    def test_groupDel_normal(self):
-        groupadd(name="tempGroup", safe=True)
-        assert groupdel(name="tempGroup", safe=True)
+    def test_groupdel_normal(self):
+        try:
+            groupadd(group_name="tempGroup", safe=True)
+            assert groupdel(group_name="tempGroup", safe=True)
+        finally:
+            groupdel('tempGroup', safe=True)
 
 
 if __name__ == "__main__":

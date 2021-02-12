@@ -6,8 +6,8 @@ class SystemGroup(object):
     """
     系统用户组类
     """
-    __nogroup_group = "nogroup"
-    __root_group = "root"
+    __NOGROUP = "nogroup"
+    __ROOT = "root"
 
     def __init__(self, gid=None, name=None):
         """
@@ -59,7 +59,7 @@ class SystemGroup(object):
         将gid设置到当前程序
         :return: None
         """
-        os.setgroups([self.gid])
+        os.setgid(self.gid)
 
     def __str__(self):
         """
@@ -121,7 +121,7 @@ class SystemGroup(object):
         获取root用户组
         :return: root用户组
         """
-        return cls(name=cls.__root_group)
+        return cls(name=cls.__ROOT)
 
     @classmethod
     def nogroup(cls):
@@ -129,7 +129,7 @@ class SystemGroup(object):
         获取nogroup用户组
         :return: nogroup用户组
         """
-        return cls(name=cls.__nogroup_group)
+        return cls(name=cls.__NOGROUP)
 
     @classmethod
     def all(cls):

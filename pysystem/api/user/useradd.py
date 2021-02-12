@@ -1,3 +1,5 @@
+import where
+
 from pysystem.models import *
 from pysystem.utils import *
 
@@ -10,7 +12,7 @@ class UseraddExecuteException(ExecuteException):
 
 
 def useradd(
-        name, uid=None, primary_group=None, groups=None,
+        user_name, uid=None, primary_group=None, groups=None,
         password=None, system=None, comment=None,
         user_group=None, no_user_group=None,
         create_home=None, no_create_home=None,
@@ -20,7 +22,7 @@ def useradd(
 ):
     """
     添加用户
-    :param name: 用户名
+    :param user_name: 用户名
     :param uid: 指定用户id
     :param primary_group: 用户组
     :param groups: 用户附加组
@@ -40,7 +42,10 @@ def useradd(
     :param safe: 安全模式（出错不抛出异常）
     :return: 创建的用户对象
     """
-    _args = []
+    useradd_exec = where.first('useradd')
+    if not useradd_exec:
+        raise EnvironmentError('No useradd executable found.')
+    _args = [useradd_exec]
 
     if system:  # 创建系统账户
         _args += ["--system"]
@@ -78,8 +83,7 @@ def useradd(
     if selinux_user:  # selinux user
         _args += ["--selinux_user"]
 
-    _args = ["useradd"] + _args  # 执行程序
-    _args += [name]  # 用户名
+    _args += [user_name]  # 用户名
 
     try:
         execute_process(_args, cls=UseraddExecuteException)
@@ -88,4 +92,4 @@ def useradd(
             raise _e
         return None
 
-    return SystemUser(name=name)
+    return SystemUser(name=user_name)

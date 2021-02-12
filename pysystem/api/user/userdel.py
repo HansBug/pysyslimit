@@ -1,3 +1,5 @@
+import where
+
 from pysystem.utils import *
 
 
@@ -9,14 +11,14 @@ class UserdelExecuteException(ExecuteException):
 
 
 def userdel(
-        name,
+        user_name,
         force=False, remove_dir=False,
         chroot_dir=None, selinux_user=False,
         safe=False
 ):
     """
     删除用户
-    :param name: 用户名
+    :param user_name: 用户名
     :param force: 强制删除
     :param remove_dir: 删除用户路径
     :param chroot_dir: root入口点路径
@@ -24,7 +26,10 @@ def userdel(
     :param safe: 安全模式（出错不抛出异常）
     :return: 是否成功删除
     """
-    _args = []
+    userdel_exec = where.first('userdel')
+    if not userdel_exec:
+        raise EnvironmentError('No userdel executable found.')
+    _args = [userdel_exec]
 
     if force:  # 强制删除
         _args += ["--force"]
@@ -35,8 +40,7 @@ def userdel(
     if selinux_user:  # selinux user
         _args += ["--selinux_user"]
 
-    _args = ["userdel"] + _args
-    _args += [name]
+    _args += [user_name]
 
     try:
         execute_process(_args, cls=UserdelExecuteException)

@@ -19,5 +19,14 @@ setup(
     ),
     author=meta['__AUTHOR__'],
     author_email=meta['__AUTHOR_EMAIL__'],
-    python_requires=">=3.5"
+    python_requires=">=3.5",
+    install_requires=[
+        'where>=1',
+    ],
+    tests_require=[
+        'pytest>=3',
+        'pytest-cov',
+        'pytest-mock',
+    ],
+
 )
