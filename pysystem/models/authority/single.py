@@ -164,6 +164,32 @@ class FileSingleAuthority(_BaseVariables):
         else:
             raise TypeError('Str expected but {actual} found.'.format(actual=repr(type(value))))
 
+    def __tuple(self):
+        """
+        Get object's information
+        :return: object's information
+        """
+        return self.__readable, self.__writable, self.__executable
+
+    def __eq__(self, other):
+        """
+        Get equality of single authority
+        :return: equality
+        """
+        if other is self:
+            return True
+        elif isinstance(other, self.__class__):
+            return self.__tuple() == other.__tuple()
+        else:
+            return False
+
+    def __hash__(self):
+        """
+        Get hash of single authority
+        :return: hash value
+        """
+        return hash(self.__tuple())
+
     def __str__(self):
         """
         获取字符串格式（即标记格式）

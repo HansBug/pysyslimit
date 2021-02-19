@@ -41,6 +41,21 @@ class TestModelsAuthoritySingle:
         with pytest.raises(TypeError):
             f.value = None
 
+    def test_eq(self):
+        a = FileSingleAuthority.loads('rw-')
+        assert a == a
+        assert a == FileSingleAuthority.loads('rw-')
+        assert a == FileSingleAuthority.loads(6)
+        assert not a == []
+
+    def test_hash(self):
+        d = {
+            FileSingleAuthority.loads('rw-'): 1,
+            FileSingleAuthority.loads(5): 2,
+        }
+        assert d[FileSingleAuthority.loads(6)] == 1
+        assert d[FileSingleAuthority.loads('r-x')] == 2
+
 
 if __name__ == "__main__":
     pytest.main([os.path.abspath(__file__)])

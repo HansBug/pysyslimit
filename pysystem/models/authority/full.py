@@ -183,6 +183,32 @@ class FileAuthority(_BaseVariables):
         # noinspection PyAttributeOutsideInit
         self.value = int(str(value), 8)
 
+    def __tuple(self):
+        """
+        Get object's information
+        :return: object's information
+        """
+        return self.__user_authority, self.__group_authority, self.__other_authority
+
+    def __eq__(self, other):
+        """
+        Get equality of full authority
+        :return: equality
+        """
+        if other is self:
+            return True
+        elif isinstance(other, self.__class__):
+            return self.__tuple() == other.__tuple()
+        else:
+            return False
+
+    def __hash__(self):
+        """
+        Get hash of full authority
+        :return: hash value
+        """
+        return hash(self.__tuple())
+
     def __repr__(self):
         """
         获取表达式格式

@@ -50,6 +50,21 @@ class TestModelsAuthorityFull:
         assert (fa1 & "rw------x").sign == "--------x"
         assert ("rw------x" - fa1).sign == "rw-------"
 
+    def test_eq(self):
+        a = FileAuthority.loads('754')
+        assert a == a
+        assert a == FileAuthority.loads('754')
+        assert a == FileAuthority.loads('rwxr-xr--')
+        assert not a == []
+
+    def test_hash(self):
+        d = {
+            FileAuthority.loads('754'): 1,
+            FileAuthority.loads(0): 3,
+        }
+        assert d[FileAuthority.loads('rwxr-xr--')] == 1
+        assert d[FileAuthority.loads('---------')] == 3
+
 
 if __name__ == "__main__":
     pytest.main([os.path.abspath(__file__)])
