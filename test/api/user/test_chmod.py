@@ -1,6 +1,7 @@
 import pytest
 
 from pysystem.api.authority.chmod import *
+from pysystem.models import FileAuthority
 
 
 @pytest.mark.unittest
@@ -11,13 +12,13 @@ class TestApiUserChmod:
             os.mknod(path)
 
             chmod(path, 0)
-            assert (os.stat(path).st_mode & 0o777) == 0
+            assert FileAuthority.load_from_file(path) == FileAuthority.loads('---------')
 
             chmod_add(path, "777")
-            assert (os.stat(path).st_mode & 0o777) == 0o777
+            assert FileAuthority.load_from_file(path) == FileAuthority.loads('rwxrwxrwx')
 
             chmod_del(path, "------rwx")
-            assert (os.stat(path).st_mode & 0o777) == 0o770
+            assert FileAuthority.load_from_file(path) == FileAuthority.loads('rwxrwx---')
         finally:
             os.remove(path)
 
