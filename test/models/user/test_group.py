@@ -32,6 +32,7 @@ class TestSystemGroupAttaches:
             SystemGroup.current_attaches().clear()
 
 
+# noinspection DuplicatedCode
 @pytest.mark.unittest
 class TestSystemGroup:
     def test_group(self):
@@ -64,12 +65,31 @@ class TestSystemGroup:
                     flag = True
             assert flag
         assert len(grp.getgrall()) == len(group.all())
+
         os.mknod("./tempTest")
-        assert group.load_from_file("./tempTest").gid == os.stat("./tempTest").st_gid
-        os.remove("./tempTest")
+        try:
+            assert group.load_from_file("./tempTest").gid == os.stat("./tempTest").st_gid
+        finally:
+            os.remove("./tempTest")
         assert group.loads(root_group).name == "root"
         assert group.loads(0).gid == 0
         assert group.loads("root").name == "root"
+
+    def test_eq(self):
+        g = SystemGroup.loads('nogroup')
+        assert g == g
+        assert g == SystemGroup.loads('nogroup')
+        assert not g == SystemGroup.loads('root')
+        assert not g == []
+
+    def test_hash(self):
+        d = {
+            SystemGroup.loads('nogroup'): 1,
+            SystemGroup.loads('root'): 2,
+        }
+
+        assert d[SystemGroup.loads('nogroup')] == 1
+        assert d[SystemGroup.loads('root')] == 2
 
 
 if __name__ == "__main__":

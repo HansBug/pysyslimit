@@ -4,22 +4,24 @@ import pwd
 import pytest
 
 from pysystem.api.authority.chown import chown
+from pysystem.models import SystemUser
 
 
 @pytest.mark.unittest
 class TestApiAuthorityChown:
-    def setup(self):
+    def test_user_root_and_none(self):
         os.mknod("./tempTest")
+        try:
+            path = "./tempTest"
 
-    def teardown(self):
-        os.remove("./tempTest")
+            chown(path, "nobody", "nogroup")
+            assert SystemUser.load_from_file(path) == SystemUser.loads('nobody')
+            assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "nobody")
 
-    def test_user_rootandnone(self):
-        path = "./tempTest"
-        chown(path, "root", "root")
-        assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
-        chown(path)
-        assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "root")
+            chown(path)
+            assert (pwd.getpwuid(os.stat(path).st_uid).pw_name == "nobody")
+        finally:
+            os.remove("./tempTest")
 
 
 if __name__ == "__main__":

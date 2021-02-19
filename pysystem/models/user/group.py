@@ -76,6 +76,32 @@ class SystemGroup:
         """
         os.setgid(self.gid)
 
+    def __tuple(self):
+        """
+        Get group's information
+        :return: group's information
+        """
+        return self.name, self.gid
+
+    def __eq__(self, other):
+        """
+        Compare groups
+        :return: equality
+        """
+        if other is self:
+            return True
+        elif isinstance(other, self.__class__):
+            return self.__tuple() == other.__tuple()
+        else:
+            return False
+
+    def __hash__(self):
+        """
+        Get hash of group
+        :return: hash value
+        """
+        return hash(self.__tuple())
+
     def __str__(self):
         """
         获取字符串格式

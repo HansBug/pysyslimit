@@ -116,6 +116,32 @@ class SystemUser(object):
             self.primary_group.apply()
         os.setuid(self.uid)
 
+    def __tuple(self):
+        """
+        Get user's information
+        :return: user's information
+        """
+        return self.name, self.uid
+
+    def __eq__(self, other):
+        """
+        Compare users
+        :return: equality
+        """
+        if other is self:
+            return True
+        elif isinstance(other, self.__class__):
+            return self.__tuple() == other.__tuple()
+        else:
+            return False
+
+    def __hash__(self):
+        """
+        Get hash of user
+        :return: hash value
+        """
+        return hash(self.__tuple())
+
     def __str__(self):
         """
         获取字符串格式

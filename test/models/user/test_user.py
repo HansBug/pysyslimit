@@ -8,6 +8,7 @@ from pysystem.models.user.group import SystemGroup
 from pysystem.models.user.user import SystemUser
 
 
+# noinspection DuplicatedCode
 @pytest.mark.unittest
 class TestSystemUser:
     def test_user(self):
@@ -61,12 +62,31 @@ class TestSystemUser:
                     flag = True
             assert flag
         assert len(pwd.getpwall()) == len(user.all())
+
         os.mknod("./tempTest")
-        assert user.load_from_file("./tempTest").uid == os.stat("./tempTest").st_uid
-        os.remove("./tempTest")
+        try:
+            assert user.load_from_file("./tempTest").uid == os.stat("./tempTest").st_uid
+        finally:
+            os.remove("./tempTest")
         assert user.loads(root_user).name == "root"
         assert user.loads(0).uid == 0
         assert user.loads("root").name == "root"
+
+    def test_eq(self):
+        g = SystemUser.loads('nobody')
+        assert g == g
+        assert g == SystemUser.loads('nobody')
+        assert not g == SystemUser.loads('root')
+        assert not g == []
+
+    def test_hash(self):
+        d = {
+            SystemUser.loads('nobody'): 1,
+            SystemUser.loads('root'): 2,
+        }
+
+        assert d[SystemUser.loads('nobody')] == 1
+        assert d[SystemUser.loads('root')] == 2
 
 
 if __name__ == "__main__":
