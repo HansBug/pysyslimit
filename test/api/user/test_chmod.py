@@ -1,6 +1,6 @@
 import pytest
 
-from pysystem.api.user.chmod import *
+from pysystem.api.authority.chmod import *
 
 
 @pytest.mark.unittest

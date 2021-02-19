@@ -3,7 +3,7 @@ import shutil
 
 import pytest
 
-from pysystem.api.authority.chown import chown
+from pysystem.api.user.chown import chown
 from pysystem.models import SystemUser, SystemGroup
 
 

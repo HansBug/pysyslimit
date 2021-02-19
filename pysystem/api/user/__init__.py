@@ -1,4 +1,4 @@
-from .chmod import chmod, chmod_add, chmod_del
+from .chown import chown
 from .useradd import useradd, UseraddExecuteException
 from .userdel import userdel, UserdelExecuteException
 

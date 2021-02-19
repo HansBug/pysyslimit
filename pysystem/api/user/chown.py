@@ -1,7 +1,7 @@
 import os
 
-from ..base import do_recursive
-from ...models import *
+from pysystem.api.base import do_recursive
+from pysystem.models import *
 
 
 # noinspection PyShadowingNames
