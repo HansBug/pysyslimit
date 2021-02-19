@@ -1,7 +1,7 @@
 import os
 import re
 
-from .single import FileSingleAuthority
+from .single import FileSingleAuthority, _BaseVariables
 
 
 class FileUserAuthority(FileSingleAuthority):
@@ -25,7 +25,7 @@ class FileOtherAuthority(FileSingleAuthority):
     pass
 
 
-class FileAuthority(object):
+class FileAuthority(_BaseVariables):
     """
     文件权限类
     """
@@ -37,9 +37,9 @@ class FileAuthority(object):
         :param group_authority: 用户组权限对象
         :param other_authority: 其他权限对象
         """
-        self.__user_authority = user_authority or FileUserAuthority()
-        self.__group_authority = group_authority or FileGroupAuthority()
-        self.__other_authority = other_authority or FileOtherAuthority()
+        self.__user_authority = FileUserAuthority.loads(user_authority or FileUserAuthority())
+        self.__group_authority = FileGroupAuthority.loads(group_authority or FileGroupAuthority())
+        self.__other_authority = FileOtherAuthority.loads(other_authority or FileOtherAuthority())
 
     @property
     def user(self):
@@ -107,11 +107,15 @@ class FileAuthority(object):
         设置权限标记串
         :param value: 权限标记串
         """
-        _str_value = str(value)
-        _str_value = "-" * (9 - len(_str_value)) + _str_value
-        self.__user_authority.sign = _str_value[-9:-6]
-        self.__group_authority.sign = _str_value[-6:-3]
-        self.__other_authority.sign = _str_value[-3:]
+        if isinstance(value, str):
+            if re.fullmatch(self._FULL_SIGN, value):
+                self.__user_authority.sign = value[0:3]
+                self.__group_authority.sign = value[3:6]
+                self.__other_authority.sign = value[6:9]
+            else:
+                raise ValueError('Invalid single sign - {actual}.'.format(actual=repr(value)))
+        else:
+            raise TypeError('Str expected but {actual} found.'.format(actual=repr(type(value))))
 
     def __str__(self):
         """
@@ -138,10 +142,20 @@ class FileAuthority(object):
         设置权限值（十进制）
         :param val: 权限值（十进制）
         """
-        _int_value = int(val)
-        self.__user_authority.value = int(_int_value / 64) & 7
-        self.__group_authority.value = int(_int_value / 8) & 7
-        self.__other_authority.value = int(_int_value / 1) & 7
+        if isinstance(val, str):
+            if not re.fullmatch(self._FULL_DIGIT, val):
+                raise ValueError('3-length digit expected but {actual} found.'.format(actual=repr(val)))
+            val = int(val, 8)
+
+        if isinstance(val, int):
+            if val >= self._FULL_WEIGHT:
+                raise ValueError('Value from 000 to 777 expected but {actual} found.'.format(actual=repr(oct(val)[2:])))
+        else:
+            raise TypeError('Integer or integer-like string expected but {actual} found.'.format(actual=repr(val)))
+
+        self.__user_authority.value = int(val / 64) & 7
+        self.__group_authority.value = int(val / 8) & 7
+        self.__other_authority.value = int(val / 1) & 7
 
     def __int__(self):
         """
@@ -219,17 +233,17 @@ class FileAuthority(object):
         :param value: 各类值
         :return: 加载对象
         """
-        if isinstance(value, int):
+        if isinstance(value, cls):
+            return value
+        elif isinstance(value, int):
             return cls.load_by_value(value)
         elif isinstance(value, str):
             if re.fullmatch(r"\d+", value):
                 return cls.load_by_oct_value(value)
             else:
                 return cls.load_by_sign(value)
-        elif isinstance(value, cls):
-            return value
         else:
-            return None
+            raise TypeError('Int or str expected but {actual} found.'.format(actual=repr(type(value))))
 
     @classmethod
     def load_from_file(cls, filename):
@@ -238,7 +252,7 @@ class FileAuthority(object):
         :param filename: 文件名
         :return: 加载对象
         """
-        return cls.load_by_value(os.stat(filename).st_mode)
+        return cls.load_by_value(os.stat(filename).st_mode & cls._FULL_MASK)
 
     def __or__(self, other):
         """

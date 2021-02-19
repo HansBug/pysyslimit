@@ -1,17 +1,36 @@
 import re
 
 
-class FileSingleAuthority(object):
+class _BaseVariables:
+    _READ_WEIGHT = 1 << 2
+    _WRITE_WEIGHT = 1 << 1
+    _EXECUTE_WEIGHT = 1 << 0
+    _SINGLE_WEIGHT = 1 << 3
+    _FULL_WEIGHT = 1 << 9
+
+    _SINGLE_MASK = _SINGLE_WEIGHT - 1
+    _FULL_MASK = _FULL_WEIGHT - 1
+
+    _SINGLE_DIGIT = r'\d'
+    _FULL_DIGIT = r'{s}{s}{s}'.format(s=_SINGLE_DIGIT)
+
+    _READ_SIGN = "r"
+    _WRITE_SIGN = "w"
+    _EXECUTE_SIGN = "x"
+    _NONE_SIGN = "-"
+    _SINGLE_SIGN = r'[{r}{n}][{w}{n}][{x}{n}]'.format(
+        r=_READ_SIGN,
+        w=_WRITE_SIGN,
+        x=_EXECUTE_SIGN,
+        n=_NONE_SIGN,
+    )
+    _FULL_SIGN = r'{s}{s}{s}'.format(s=_SINGLE_SIGN)
+
+
+class FileSingleAuthority(_BaseVariables):
     """
     单个权限类
     """
-    __READ_WEIGHT = 4
-    __WRITE_WEIGHT = 2
-    __EXECUTE_WEIGHT = 1
-    __READ_SIGN = "r"
-    __WRITE_SIGN = "w"
-    __EXECUTE_SIGN = "x"
-    __NONE_SIGN = "-"
 
     def __init__(self, readable=False, writable=False, executable=False):
         """
@@ -79,9 +98,9 @@ class FileSingleAuthority(object):
         :return: 权限权值
         """
         return sum([
-            int(self.__readable) * self.__READ_WEIGHT,
-            int(self.__writable) * self.__WRITE_WEIGHT,
-            int(self.__executable) * self.__EXECUTE_WEIGHT
+            int(self.__readable) * self._READ_WEIGHT,
+            int(self.__writable) * self._WRITE_WEIGHT,
+            int(self.__executable) * self._EXECUTE_WEIGHT
         ])
 
     @value.setter
@@ -91,19 +110,19 @@ class FileSingleAuthority(object):
         :param val: 权限权值
         """
         if isinstance(val, str):
-            if not re.fullmatch(r'\d', val):
+            if not re.fullmatch(self._SINGLE_DIGIT, val):
                 raise ValueError('Single digit expected but {actual} found.'.format(actual=repr(val)))
             val = int(val)
 
         if isinstance(val, int):
-            if len(oct(val)) != 3:
-                raise ValueError('Value from 0 to 7 expected but {actual} found.'.format(actual=repr(val)))
+            if val >= self._SINGLE_WEIGHT:
+                raise ValueError('Value from 0 to 7 expected but {actual} found.'.format(actual=repr(oct(val)[2:])))
         else:
             raise TypeError('Integer or integer-like string expected but {actual} found.'.format(actual=repr(val)))
 
-        self.__readable = not not (val & self.__READ_WEIGHT)
-        self.__writable = not not (val & self.__WRITE_WEIGHT)
-        self.__executable = not not (val & self.__EXECUTE_WEIGHT)
+        self.__readable = not not (val & self._READ_WEIGHT)
+        self.__writable = not not (val & self._WRITE_WEIGHT)
+        self.__executable = not not (val & self._EXECUTE_WEIGHT)
 
     def __int__(self):
         """
@@ -119,9 +138,9 @@ class FileSingleAuthority(object):
         :return: 标记格式
         """
         return "%s%s%s" % (
-            self.__READ_SIGN if self.__readable else self.__NONE_SIGN,
-            self.__WRITE_SIGN if self.__writable else self.__NONE_SIGN,
-            self.__EXECUTE_SIGN if self.__executable else self.__NONE_SIGN,
+            self._READ_SIGN if self.__readable else self._NONE_SIGN,
+            self._WRITE_SIGN if self.__writable else self._NONE_SIGN,
+            self._EXECUTE_SIGN if self.__executable else self._NONE_SIGN,
         )
 
     @sign.setter
@@ -132,14 +151,14 @@ class FileSingleAuthority(object):
         """
         if isinstance(value, str):
             if re.fullmatch(r'[{r}{n}][{w}{n}][{x}{n}]'.format(
-                    r=self.__READ_SIGN,
-                    w=self.__WRITE_SIGN,
-                    x=self.__EXECUTE_SIGN,
-                    n=self.__NONE_SIGN,
+                    r=self._READ_SIGN,
+                    w=self._WRITE_SIGN,
+                    x=self._EXECUTE_SIGN,
+                    n=self._NONE_SIGN,
             ), value):
-                self.__readable = value[0] == self.__READ_SIGN
-                self.__writable = value[1] == self.__WRITE_SIGN
-                self.__executable = value[2] == self.__EXECUTE_SIGN
+                self.__readable = value[0] == self._READ_SIGN
+                self.__writable = value[1] == self._WRITE_SIGN
+                self.__executable = value[2] == self._EXECUTE_SIGN
             else:
                 raise ValueError('Invalid single sign - {actual}.'.format(actual=repr(value)))
         else:

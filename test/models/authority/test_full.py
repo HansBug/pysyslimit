@@ -10,18 +10,36 @@ class TestModelsAuthorityFull:
     def test_full(self):
         fa = FileAuthority.loads(0)
         assert fa.user.value == 0
-        fa.user = 7
         assert fa.group.value == 0
-        fa.group = 3
         assert fa.other.value == 0
+
+        fa.user = 7
+        fa.group = 3
         fa.other = 7
         assert fa.sign == "rwx-wxrwx"
-        fa.sign = "rwx"
+
+        fa.sign = "------rwx"
         assert str(fa) == "------rwx"
         assert fa.oct_value == "007"
         assert repr(fa) == '<FileAuthority authority: ------rwx>'
-        noneValue = []
-        assert not FileAuthority.loads(noneValue)
+
+    def test_full_invalid(self):
+        with pytest.raises(ValueError):
+            FileAuthority.load_by_sign('93485')
+        with pytest.raises(TypeError):
+            FileAuthority.load_by_sign([])
+
+        with pytest.raises(ValueError):
+            FileAuthority.load_by_value('9999')
+        with pytest.raises(ValueError):
+            FileAuthority.load_by_value('999')
+        with pytest.raises(ValueError):
+            FileAuthority.loads(3495809348)
+        with pytest.raises(TypeError):
+            FileAuthority.load_by_value([])
+
+        with pytest.raises(TypeError):
+            FileAuthority.loads([])
 
     def test_operator_full(self):
         fa1 = FileAuthority.loads(0)
