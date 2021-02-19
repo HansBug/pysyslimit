@@ -6,6 +6,6 @@ def do_recursive(path, func, recursive):
         for _curdir, _subdirs, _files in os.walk(path):
             func(_curdir)
             for _file in _files:
-                func(_file)
+                func(os.path.join(_curdir, _file))
     else:
         func(path)
