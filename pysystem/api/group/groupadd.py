@@ -1,7 +1,7 @@
 import where
 
-from pysystem.models import *
-from pysystem.utils import *
+from ...models import *
+from ...utils import *
 
 
 class GroupaddExecuteException(ExecuteException):

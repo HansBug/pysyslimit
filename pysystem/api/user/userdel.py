@@ -1,6 +1,6 @@
 import where
 
-from pysystem.utils import *
+from ...utils import *
 
 
 class UserdelExecuteException(ExecuteException):

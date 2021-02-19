@@ -1,29 +1,24 @@
 import os
 
-from pysystem.models import *
+from ..base import do_recursive
+from ...models import *
 
 
 # noinspection PyShadowingNames
-def chown(path, user=None, group=None):
+def chown(path, user=None, group=None, recursive: bool = False):
     """
     修改文件拥有者权限
     :param path: 文件路径
     :param user: 用户
     :param group: 用户组
+    :param recursive: apply to all recursive paths
     :return: None
     """
-    if user is None:
-        _user_id = -1
-    else:
-        if not isinstance(user, SystemUser):
-            user = SystemUser.loads(user)
-        _user_id = user.uid
 
-    if group is None:
-        _group_id = -1
-    else:
-        if not isinstance(group, SystemGroup):
-            group = SystemGroup.loads(group)
-        _group_id = group.gid
+    def _single_chown(path_):
+        _user_id = SystemUser.loads(user).uid if user else -1
+        _group_id = SystemGroup.loads(group).gid if group else -1
 
-    return os.chown(path, _user_id, _group_id)
+        return os.chown(path_, _user_id, _group_id)
+
+    return do_recursive(path, _single_chown, recursive)
