@@ -25,6 +25,20 @@ class TestModelsAuthoritySingle:
         assert str("r-x" - single) == "--x"
         assert str("r-x" & single) == "r--"
 
+    def test_single_invalid(self):
+        with pytest.raises(TypeError):
+            FileSingleAuthority.loads(None)
+        with pytest.raises(ValueError):
+            FileSingleAuthority.loads('siodf')
+        with pytest.raises(ValueError):
+            FileSingleAuthority.loads('8')
+
+        f = FileSingleAuthority.loads(7)
+        with pytest.raises(TypeError):
+            f.sign = None
+        with pytest.raises(TypeError):
+            f.value = None
+
 
 if __name__ == "__main__":
     pytest.main([os.path.abspath(__file__)])

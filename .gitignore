@@ -4,3 +4,4 @@ __pycache__
 /test_*
 .coverage
 *.egg-info
+.python-version

@@ -1,3 +1,6 @@
+import re
+
+
 class FileSingleAuthority(object):
     """
     单个权限类
@@ -87,10 +90,20 @@ class FileSingleAuthority(object):
         设置权限权值
         :param val: 权限权值
         """
-        _int_value = int(val)
-        self.__readable = not not (_int_value & self.__read_weight)
-        self.__writable = not not (_int_value & self.__write_weight)
-        self.__executable = not not (_int_value & self.__execute_weight)
+        if isinstance(val, str):
+            if not re.fullmatch(r'\d', val):
+                raise ValueError('Single digit expected but {actual} found.'.format(actual=repr(val)))
+            val = int(val)
+
+        if isinstance(val, int):
+            if len(oct(val)) != 3:
+                raise ValueError('Value from 0 to 7 expected but {actual} found.'.format(actual=repr(val)))
+        else:
+            raise TypeError('Integer or integer-like string expected but {actual} found.'.format(actual=repr(val)))
+
+        self.__readable = not not (val & self.__read_weight)
+        self.__writable = not not (val & self.__write_weight)
+        self.__executable = not not (val & self.__execute_weight)
 
     def __int__(self):
         """
@@ -117,9 +130,15 @@ class FileSingleAuthority(object):
         设置标记格式
         :param value: 标记格式
         """
-        self.__readable = self.__read_sign in value
-        self.__writable = self.__write_sign in value
-        self.__executable = self.__execute_sign in value
+        if isinstance(value, str):
+            if re.fullmatch(r'[r-][w-][x-]', value):
+                self.__readable = value[0] == self.__read_sign
+                self.__writable = value[1] == self.__write_sign
+                self.__executable = value[2] == self.__execute_sign
+            else:
+                raise ValueError('Invalid single sign - {actual}.'.format(actual=repr(value)))
+        else:
+            raise TypeError('Str expected but {actual} found.'.format(actual=repr(type(value))))
 
     def __str__(self):
         """
@@ -167,12 +186,15 @@ class FileSingleAuthority(object):
         :param value: 任意数据
         :return: 加载对象
         """
-        if isinstance(value, int):
-            return cls.load_by_value(value)
-        elif isinstance(value, cls):
+        if isinstance(value, cls):
             return value
+        elif isinstance(value, (int, str)):
+            try:
+                return cls.load_by_value(value)
+            except (ValueError, TypeError):
+                return cls.load_by_sign(value)
         else:
-            return cls.load_by_sign(value)
+            raise TypeError('Int or str expected but {actual} found.'.format(actual=repr(type(value))))
 
     def __add__(self, other):
         """
