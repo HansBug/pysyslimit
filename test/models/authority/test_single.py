@@ -31,6 +31,8 @@ class TestModelsAuthoritySingle:
         with pytest.raises(ValueError):
             FileSingleAuthority.loads('siodf')
         with pytest.raises(ValueError):
+            FileSingleAuthority.loads('xrw')
+        with pytest.raises(ValueError):
             FileSingleAuthority.loads('8')
 
         f = FileSingleAuthority.loads(7)

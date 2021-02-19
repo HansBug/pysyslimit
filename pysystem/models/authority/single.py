@@ -5,13 +5,13 @@ class FileSingleAuthority(object):
     """
     单个权限类
     """
-    __read_weight = 4
-    __write_weight = 2
-    __execute_weight = 1
-    __read_sign = "r"
-    __write_sign = "w"
-    __execute_sign = "x"
-    __none_sign = "-"
+    __READ_WEIGHT = 4
+    __WRITE_WEIGHT = 2
+    __EXECUTE_WEIGHT = 1
+    __READ_SIGN = "r"
+    __WRITE_SIGN = "w"
+    __EXECUTE_SIGN = "x"
+    __NONE_SIGN = "-"
 
     def __init__(self, readable=False, writable=False, executable=False):
         """
@@ -79,9 +79,9 @@ class FileSingleAuthority(object):
         :return: 权限权值
         """
         return sum([
-            int(self.__readable) * self.__read_weight,
-            int(self.__writable) * self.__write_weight,
-            int(self.__executable) * self.__execute_weight
+            int(self.__readable) * self.__READ_WEIGHT,
+            int(self.__writable) * self.__WRITE_WEIGHT,
+            int(self.__executable) * self.__EXECUTE_WEIGHT
         ])
 
     @value.setter
@@ -101,9 +101,9 @@ class FileSingleAuthority(object):
         else:
             raise TypeError('Integer or integer-like string expected but {actual} found.'.format(actual=repr(val)))
 
-        self.__readable = not not (val & self.__read_weight)
-        self.__writable = not not (val & self.__write_weight)
-        self.__executable = not not (val & self.__execute_weight)
+        self.__readable = not not (val & self.__READ_WEIGHT)
+        self.__writable = not not (val & self.__WRITE_WEIGHT)
+        self.__executable = not not (val & self.__EXECUTE_WEIGHT)
 
     def __int__(self):
         """
@@ -119,9 +119,9 @@ class FileSingleAuthority(object):
         :return: 标记格式
         """
         return "%s%s%s" % (
-            self.__read_sign if self.__readable else self.__none_sign,
-            self.__write_sign if self.__writable else self.__none_sign,
-            self.__execute_sign if self.__executable else self.__none_sign,
+            self.__READ_SIGN if self.__readable else self.__NONE_SIGN,
+            self.__WRITE_SIGN if self.__writable else self.__NONE_SIGN,
+            self.__EXECUTE_SIGN if self.__executable else self.__NONE_SIGN,
         )
 
     @sign.setter
@@ -131,10 +131,15 @@ class FileSingleAuthority(object):
         :param value: 标记格式
         """
         if isinstance(value, str):
-            if re.fullmatch(r'[r-][w-][x-]', value):
-                self.__readable = value[0] == self.__read_sign
-                self.__writable = value[1] == self.__write_sign
-                self.__executable = value[2] == self.__execute_sign
+            if re.fullmatch(r'[{r}{n}][{w}{n}][{x}{n}]'.format(
+                    r=self.__READ_SIGN,
+                    w=self.__WRITE_SIGN,
+                    x=self.__EXECUTE_SIGN,
+                    n=self.__NONE_SIGN,
+            ), value):
+                self.__readable = value[0] == self.__READ_SIGN
+                self.__writable = value[1] == self.__WRITE_SIGN
+                self.__executable = value[2] == self.__EXECUTE_SIGN
             else:
                 raise ValueError('Invalid single sign - {actual}.'.format(actual=repr(value)))
         else:
