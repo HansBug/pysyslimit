@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pysyslimit.models.permission.full &mdash; pysyslimit 0.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> pysyslimit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/installation/index.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/config/index.html">pysyslimit.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/api/index.html">pysyslimit.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/models/index.html">pysyslimit.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/utils/index.html">pysyslimit.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">pysyslimit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pysyslimit.models.permission.full</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+    
+    
+  <h1>Source code for pysyslimit.models.permission.full</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">.single</span> <span class="kn">import</span> <span class="n">FileSinglePermission</span><span class="p">,</span> <span class="n">_BaseVariables</span>
+
+
+<div class="viewcode-block" id="FileUserPermission"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FileUserPermission">[docs]</a><span class="k">class</span> <span class="nc">FileUserPermission</span><span class="p">(</span><span class="n">FileSinglePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Single permission of the user part of a file.</span>
+<span class="sd">        Inherited from :class:`pysyslimit.models.permission.single.FileSinglePermission`.</span>
+<span class="sd">        With read(r), write(w) and execute(x).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FileGroupPermission"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FileGroupPermission">[docs]</a><span class="k">class</span> <span class="nc">FileGroupPermission</span><span class="p">(</span><span class="n">FileSinglePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Single permission of the group part of a file.</span>
+<span class="sd">        Inherited from :class:`pysyslimit.models.permission.single.FileSinglePermission`.</span>
+<span class="sd">        With read(r), write(w) and execute(x).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FileOtherPermission"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FileOtherPermission">[docs]</a><span class="k">class</span> <span class="nc">FileOtherPermission</span><span class="p">(</span><span class="n">FileSinglePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Single permission of the other part of a file.</span>
+<span class="sd">        Inherited from :class:`pysyslimit.models.permission.single.FileSinglePermission`.</span>
+<span class="sd">        With read(r), write(w) and execute(x).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FilePermission"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission">[docs]</a><span class="k">class</span> <span class="nc">FilePermission</span><span class="p">(</span><span class="n">_BaseVariables</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Full file permission class. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FilePermission.__init__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_permission</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group_permission</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">other_permission</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Constructor function.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - user_permission: User permission.</span>
+<span class="sd">            - group_permission: User group permission.</span>
+<span class="sd">            - other_permission: Other permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">=</span> <span class="n">FileUserPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">user_permission</span> <span class="ow">or</span> <span class="n">FileUserPermission</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">=</span> <span class="n">FileGroupPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">group_permission</span> <span class="ow">or</span> <span class="n">FileGroupPermission</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">=</span> <span class="n">FileOtherPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other_permission</span> <span class="ow">or</span> <span class="n">FileOtherPermission</span><span class="p">())</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            User permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span>
+
+    <span class="nd">@user</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">=</span> <span class="n">FileUserPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            User group permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span>
+
+    <span class="nd">@group</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">=</span> <span class="n">FileGroupPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">other</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Other permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span>
+
+    <span class="nd">@other</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">other</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">=</span> <span class="n">FileOtherPermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Sign format of this permission.</span>
+<span class="sd">            Such as ``rwxrwxrwx``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span><span class="o">.</span><span class="n">sign</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span><span class="o">.</span><span class="n">sign</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span><span class="o">.</span><span class="n">sign</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@sign</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_FULL_SIGN</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span><span class="o">.</span><span class="n">sign</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span><span class="o">.</span><span class="n">sign</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span><span class="o">.</span><span class="n">sign</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid single sign - </span><span class="si">{actual}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Str expected but </span><span class="si">{actual}</span><span class="s1"> found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))))</span>
+
+<div class="viewcode-block" id="FilePermission.__str__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            String format of this permission.</span>
+<span class="sd">            The same as ``sign``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sign</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Int value of current permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">])</span>
+
+    <span class="nd">@value</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_FULL_DIGIT</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;3-length digit expected but </span><span class="si">{actual}</span><span class="s1"> found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_FULL_WEIGHT</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Value from 000 to 777 expected but </span><span class="si">{actual}</span><span class="s1"> found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="nb">oct</span><span class="p">(</span><span class="n">val</span><span class="p">)[</span><span class="mi">2</span><span class="p">:])))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Integer or integer-like string expected but </span><span class="si">{actual}</span><span class="s1"> found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span> <span class="o">/</span> <span class="mi">64</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span> <span class="o">/</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span> <span class="o">/</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">7</span>
+
+<div class="viewcode-block" id="FilePermission.__int__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__int__">[docs]</a>    <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Int format of this permission.</span>
+<span class="sd">            The same as ``value``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">oct_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Octal tnt value of current permission.</span>
+<span class="sd">            Such as ``777``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_value</span> <span class="o">=</span> <span class="nb">oct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">_value</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">_value</span><span class="p">))</span> <span class="o">+</span> <span class="n">_value</span>
+        <span class="k">return</span> <span class="n">_value</span>
+
+    <span class="nd">@oct_value</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">oct_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="c1"># noinspection PyAttributeOutsideInit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span>
+
+<div class="viewcode-block" id="FilePermission.__eq__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Get equality of full permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tuple</span><span class="p">()</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">__tuple</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="FilePermission.__hash__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__hash__">[docs]</a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Get hash of full permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__tuple</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="FilePermission.__repr__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            String representation format of this permission.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;</span><span class="si">%s</span><span class="s1"> permission: </span><span class="si">%s</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sign</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilePermission.load_by_value"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.load_by_value">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load_by_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Load permission by int value.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - value: Int value of permission.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - permission: Loaded permission object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">_instance</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">_instance</span></div>
+
+<div class="viewcode-block" id="FilePermission.load_by_sign"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.load_by_sign">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load_by_sign</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sign</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Load permission by string sign.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - value: String sign of permission.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - permission: Loaded permission object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">_instance</span><span class="o">.</span><span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span>
+        <span class="k">return</span> <span class="n">_instance</span></div>
+
+<div class="viewcode-block" id="FilePermission.load_by_oct_value"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.load_by_oct_value">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load_by_oct_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">oct_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Load permission by octal value.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - value: Octal value of permission.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - permission: Loaded permission object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">_instance</span><span class="o">.</span><span class="n">oct_value</span> <span class="o">=</span> <span class="n">oct_value</span>
+        <span class="k">return</span> <span class="n">_instance</span></div>
+
+<div class="viewcode-block" id="FilePermission.loads"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.loads">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Load permission by any types of value.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - value: Any types of value of permission.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - permission: Loaded permission object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">load_by_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">load_by_oct_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">load_by_sign</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Int or str expected but </span><span class="si">{actual}</span><span class="s1"> found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="nb">repr</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))))</span></div>
+
+<div class="viewcode-block" id="FilePermission.load_from_file"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.load_from_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load_from_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Get file&#39;s permission.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - filename: Name of the file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - permission: Permission object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">load_by_value</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">&amp;</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_FULL_MASK</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilePermission.__or__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__or__">[docs]</a>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="n">user_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">|</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span><span class="p">,</span>
+            <span class="n">group_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">|</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span><span class="p">,</span>
+            <span class="n">other_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">|</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilePermission.__ror__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions, right version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">|</span> <span class="n">other</span></div>
+
+<div class="viewcode-block" id="FilePermission.__ior__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__ior__">[docs]</a>    <span class="k">def</span> <span class="fm">__ior__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions, self version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">|=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">|=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">|=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="FilePermission.__add__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__add__">[docs]</a>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions, the same as ``|``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">|</span> <span class="n">other</span></div>
+
+<div class="viewcode-block" id="FilePermission.__radd__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__radd__">[docs]</a>    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions, right version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="n">other</span></div>
+
+<div class="viewcode-block" id="FilePermission.__iadd__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__iadd__">[docs]</a>    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Merge permissions, self version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span> <span class="o">|=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="FilePermission.__and__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__and__">[docs]</a>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission intersection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="n">user_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">&amp;</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span><span class="p">,</span>
+            <span class="n">group_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">&amp;</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span><span class="p">,</span>
+            <span class="n">other_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">&amp;</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilePermission.__rand__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__rand__">[docs]</a>    <span class="k">def</span> <span class="fm">__rand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission intersection, right version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&amp;</span> <span class="n">other</span></div>
+
+<div class="viewcode-block" id="FilePermission.__iand__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__iand__">[docs]</a>    <span class="k">def</span> <span class="fm">__iand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission intersection, self version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">&amp;=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">&amp;=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">&amp;=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="FilePermission.__sub__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__sub__">[docs]</a>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission subtract.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="n">user_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">-</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span><span class="p">,</span>
+            <span class="n">group_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">-</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span><span class="p">,</span>
+            <span class="n">other_permission</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">-</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilePermission.__rsub__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__rsub__">[docs]</a>    <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission subtract, right version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="FilePermission.__isub__"><a class="viewcode-back" href="../../../../api_doc/models/permission.html#pysyslimit.models.permission.FilePermission.__isub__">[docs]</a>    <span class="k">def</span> <span class="fm">__isub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Permission subtract, self version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__user_permission</span> <span class="o">-=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__user_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group_permission</span> <span class="o">-=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__group_permission</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__other_permission</span> <span class="o">-=</span> <span class="n">_other</span><span class="o">.</span><span class="n">__other_permission</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+</pre></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, HansBug, PotassiumWings
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+    <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v0.5.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+        <div class="rst-other-versions">
+                <dl>
+                    <dt>Tags</dt>
+                        <dd><a href="full.html">v0.5.0</a></dd>
+                </dl>
+                <dl>
+                    <dt>Branches</dt>
+                        <dd><a href="../../../../../main/index.html">main</a></dd>
+                </dl>
+        </div>
+    </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
