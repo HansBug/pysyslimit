@@ -7,4 +7,5 @@ pysyslimit.models
     :maxdepth: 3
 
     permission
+    user
 
