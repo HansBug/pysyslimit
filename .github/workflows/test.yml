@@ -6,16 +6,17 @@ on:
 jobs:
   unittest:
     name: Code test
-    runs-on: ${{ matrix.os }}
+    runs-on: 'ubuntu-18.04'
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     container:
-      image: python:${{ matrix.python-version }}
+      image: python:${{ matrix.python-version }}-${{ matrix.os }}
       options: --user root
     strategy:
       fail-fast: false
       matrix:
         os:
-          - 'ubuntu-18.04'
+          - 'buster'
+          - 'bullseye'
         python-version:
           - '3.6'
           - '3.7'
@@ -29,11 +30,18 @@ jobs:
         with:
           fetch-depth: 20
       - name: Set up system dependences on linux
-        if: ${{ runner.os == 'Linux' }}
+        if: ${{ matrix.os != 'alpine' }}
         run: |
           apt-get update
           apt-get install -y tree cloc wget curl make graphviz
           apt-get install -y libxml2-dev libxslt-dev python-dev  # need by pypy3
+          dot -V
+      - name: Set up system dependences on alpine
+        if: ${{ matrix.os == 'alpine' }}
+        run: |
+          apk update
+          apk add tree cloc wget curl make graphviz
+          apk add libxml2-dev libxslt-dev
           dot -V
       - name: Set up python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
