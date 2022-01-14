@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from pysystem.configs.meta import __TITLE__
+from pysystem.config.meta import __TITLE__
 
 
 @pytest.mark.unittest
