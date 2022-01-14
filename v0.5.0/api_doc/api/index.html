@@ -1,0 +1,766 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pysyslimit.api &mdash; pysyslimit 0.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pysyslimit.models" href="../models/index.html" />
+    <link rel="prev" title="pysyslimit.config.meta" href="../config/meta.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pysyslimit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/installation/index.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config/index.html">pysyslimit.config</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pysyslimit.api</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#chmod">chmod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chmod-add">chmod_add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chmod-del">chmod_del</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chown">chown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groupadd">groupadd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groupaddexecuteexception">GroupaddExecuteException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groupdel">groupdel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groupdelexecuteexception">GroupdelExecuteException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useradd">useradd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useraddexecuteexception">UseraddExecuteException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#userdel">userdel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#userdelexecuteexception">UserdelExecuteException</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">pysyslimit.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">pysyslimit.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pysyslimit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>pysyslimit.api</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api_doc/api/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+    
+    
+  <div class="section" id="pysyslimit-api">
+<h1>pysyslimit.api<a class="headerlink" href="#pysyslimit-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="chmod">
+<h2>chmod<a class="headerlink" href="#chmod" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.chmod">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">chmod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">mod</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/permission/chmod.html#chmod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.chmod" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Set the permission of file.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>path (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Path of the file going to set permission.</p></li>
+<li><p>mod (<code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code>): Permission information object.</p></li>
+<li><p>recursive (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Recursively set the subdirectories or not,             default is <code class="docutils literal notranslate"><span class="pre">False</span></code> which means only apply to the current file.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">chmod</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod</span><span class="p">(</span><span class="s1">&#39;my_file&#39;</span><span class="p">,</span> <span class="s1">&#39;777&#39;</span><span class="p">)</span>  <span class="c1"># chmod 777 my_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod</span><span class="p">(</span><span class="s1">&#39;my_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;777&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># chmod -R 777 my_dir</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="chmod-add">
+<h2>chmod_add<a class="headerlink" href="#chmod-add" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.chmod_add">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">chmod_add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">mod</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/permission/chmod.html#chmod_add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.chmod_add" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Append the permission of file.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>path (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Path of the file going to append permission.</p></li>
+<li><p>mod (<code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code>): Permission information object.</p></li>
+<li><p>recursive (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Recursively set the subdirectories or not,             default is <code class="docutils literal notranslate"><span class="pre">False</span></code> which means only apply to the current file.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">chmod_add</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod_add</span><span class="p">(</span><span class="s1">&#39;my_file&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">)</span>  <span class="c1"># chmod +600 my_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod_add</span><span class="p">(</span><span class="s1">&#39;my_dur&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># chmod -R +600 my_dir</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="chmod-del">
+<h2>chmod_del<a class="headerlink" href="#chmod-del" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.chmod_del">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">chmod_del</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">mod</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/permission/chmod.html#chmod_del"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.chmod_del" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Remove the permission of file.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>path (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Path of the file going to remove permission.</p></li>
+<li><p>mod (<code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code>): Permission information object.</p></li>
+<li><p>recursive (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Recursively set the subdirectories or not,             default is <code class="docutils literal notranslate"><span class="pre">False</span></code> which means only apply to the current file.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">chmod_del</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod_del</span><span class="p">(</span><span class="s1">&#39;my_file&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">)</span>  <span class="c1"># chmod -600 my_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chmod_del</span><span class="p">(</span><span class="s1">&#39;my_dur&#39;</span><span class="p">,</span> <span class="s1">&#39;600&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># chmod -R -600 my_dir</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="chown">
+<h2>chown<a class="headerlink" href="#chown" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.chown">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">chown</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">group</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/user/chown.html#chown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.chown" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Set the owner of file.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>path (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Path of the file going to set owner.</p></li>
+<li><p>user (<code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code>): User object of the user going to be set,             default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means do not change user.</p></li>
+<li><p>group (<code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code>): Group object of the group going to be set,             default is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means do not change group.</p></li>
+<li><p>recursive (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): Recursively set the subdirectories or not,             default is <code class="docutils literal notranslate"><span class="pre">False</span></code> which means only apply to the current file.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">chown</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chown</span><span class="p">(</span><span class="s1">&#39;my_file&#39;</span><span class="p">,</span> <span class="s1">&#39;myself&#39;</span><span class="p">,</span> <span class="s1">&#39;mygroup&#39;</span><span class="p">)</span>  <span class="c1"># chown myself:mygroup my_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chown</span><span class="p">(</span><span class="s1">&#39;my_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;myself&#39;</span><span class="p">,</span> <span class="s1">&#39;mygroup&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># chown -R myself:mygroup my_dir</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="groupadd">
+<h2>groupadd<a class="headerlink" href="#groupadd" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.groupadd">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">groupadd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">group_name</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">gid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">non_unique</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">system</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">chroot_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extra_users</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">safe</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/group/groupadd.html#groupadd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.groupadd" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Create a new group.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>group_name: Name of the new group.</p></li>
+<li><p>force: Foce create this group.</p></li>
+<li><p>gid: Gid of this group.</p></li>
+<li><p>non_unique: Not unique group.</p></li>
+<li><p>password: Password of the group.</p></li>
+<li><p>system: Create as system-leveled group.</p></li>
+<li><p>chroot_dir: Root entry directory.</p></li>
+<li><p>extra_users: Use extra user database.</p></li>
+<li><p>safe: Safe mode (no error information when error)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>group: Created group object.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">groupadd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">groupadd</span><span class="p">(</span><span class="s1">&#39;mygroup&#39;</span><span class="p">)</span>  <span class="c1"># groupadd mygroup</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="groupaddexecuteexception">
+<h2>GroupaddExecuteException<a class="headerlink" href="#groupaddexecuteexception" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.api.GroupaddExecuteException">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">GroupaddExecuteException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/group/groupadd.html#GroupaddExecuteException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Exception class of <code class="docutils literal notranslate"><span class="pre">groupadd</span></code> command,         inherited from <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor of class <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>return_code: Return code.</p></li>
+<li><p>stdout: Stdout content.</p></li>
+<li><p>stderr: Stderr content.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.message">
+<em class="property">property </em><code class="sig-name descname">message</code><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.message" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Message of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.return_code">
+<em class="property">property </em><code class="sig-name descname">return_code</code><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.return_code" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Return code of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.stderr">
+<em class="property">property </em><code class="sig-name descname">stderr</code><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.stderr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stderr content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.stdout">
+<em class="property">property </em><code class="sig-name descname">stdout</code><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.stdout" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stdout content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupaddExecuteException.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#pysyslimit.api.GroupaddExecuteException.title" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Title of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="groupdel">
+<h2>groupdel<a class="headerlink" href="#groupdel" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.groupdel">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">groupdel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">group_name</span></em>, <em class="sig-param"><span class="n">chroot_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">safe</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/group/groupdel.html#groupdel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.groupdel" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Delete an existing group.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>group_name: Name of the group.</p></li>
+<li><p>chroot_dir: Root entry directory.</p></li>
+<li><p>force: Force delete.</p></li>
+<li><p>safe: Safe mode (no error information when error)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>success: Delete success or not.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">groupdel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">groupdel</span><span class="p">(</span><span class="s1">&#39;mygroup&#39;</span><span class="p">)</span>  <span class="c1"># groupdel mygroup</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="groupdelexecuteexception">
+<h2>GroupdelExecuteException<a class="headerlink" href="#groupdelexecuteexception" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.api.GroupdelExecuteException">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">GroupdelExecuteException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/group/groupdel.html#GroupdelExecuteException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Exception class of <code class="docutils literal notranslate"><span class="pre">groupdel</span></code> command,         inherited from <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor of class <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>return_code: Return code.</p></li>
+<li><p>stdout: Stdout content.</p></li>
+<li><p>stderr: Stderr content.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.message">
+<em class="property">property </em><code class="sig-name descname">message</code><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.message" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Message of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.return_code">
+<em class="property">property </em><code class="sig-name descname">return_code</code><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.return_code" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Return code of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.stderr">
+<em class="property">property </em><code class="sig-name descname">stderr</code><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.stderr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stderr content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.stdout">
+<em class="property">property </em><code class="sig-name descname">stdout</code><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.stdout" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stdout content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.GroupdelExecuteException.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#pysyslimit.api.GroupdelExecuteException.title" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Title of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="useradd">
+<h2>useradd<a class="headerlink" href="#useradd" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.useradd">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">useradd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_name</span></em>, <em class="sig-param"><span class="n">uid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">primary_group</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">groups</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">system</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">comment</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">user_group</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">no_user_group</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">create_home</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">no_create_home</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">home_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">base_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shell</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">chroot_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">selinux_user</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extra_users</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">safe</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/user/useradd.html#useradd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.useradd" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Create a new user.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>user_name: Name of the user.</p></li>
+<li><p>uid: Uid of the user.</p></li>
+<li><p>primary_group: Primary group of the user.</p></li>
+<li><p>groups: Append groups of the user.</p></li>
+<li><p>password: Password of the user.</p></li>
+<li><p>system: Create as system user or not.</p></li>
+<li><p>comment: Comment information of the user.</p></li>
+<li><p>user_group: Create a user group with the same name or not.</p></li>
+<li><p>no_user_group: Do not create a user group.</p></li>
+<li><p>create_home: Create a home path.</p></li>
+<li><p>no_create_home: Do not create home path.</p></li>
+<li><p>home_dir: Directory of the home path.</p></li>
+<li><p>base_dir: Base directory of the user.</p></li>
+<li><p>shell: User’s shell.</p></li>
+<li><p>chroot_dir: User’s chroot path.</p></li>
+<li><p>selinux_user: Remove linux mapping user.</p></li>
+<li><p>extra_users: Use extra user database.</p></li>
+<li><p>safe: Safe mode (no error message when error)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>user: Created user object.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">useradd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">useradd</span><span class="p">(</span><span class="s2">&quot;myself&quot;</span><span class="p">)</span>  <span class="c1"># useradd myself</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="useraddexecuteexception">
+<h2>UseraddExecuteException<a class="headerlink" href="#useraddexecuteexception" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.api.UseraddExecuteException">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">UseraddExecuteException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/user/useradd.html#UseraddExecuteException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Exception class of <code class="docutils literal notranslate"><span class="pre">useradd</span></code> command,         inherited from <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor of class <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>return_code: Return code.</p></li>
+<li><p>stdout: Stdout content.</p></li>
+<li><p>stderr: Stderr content.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.message">
+<em class="property">property </em><code class="sig-name descname">message</code><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.message" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Message of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.return_code">
+<em class="property">property </em><code class="sig-name descname">return_code</code><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.return_code" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Return code of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.stderr">
+<em class="property">property </em><code class="sig-name descname">stderr</code><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.stderr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stderr content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.stdout">
+<em class="property">property </em><code class="sig-name descname">stdout</code><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.stdout" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stdout content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UseraddExecuteException.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#pysyslimit.api.UseraddExecuteException.title" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Title of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="userdel">
+<h2>userdel<a class="headerlink" href="#userdel" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pysyslimit.api.userdel">
+<code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">userdel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_name</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">remove_dir</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">chroot_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">selinux_user</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">safe</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/user/userdel.html#userdel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.userdel" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Overview:</dt><dd><p>Delete an existing user.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>user_name: Name of the user.</p></li>
+<li><p>force: Force delete.</p></li>
+<li><p>remove_dir: Remove the directory of user or not.</p></li>
+<li><p>chroot_dir: Root entry path.</p></li>
+<li><p>selinux_user: Remove the mapping user.</p></li>
+<li><p>safe: Safe mode (no error information when error)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>success: Delete success or not.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysyslimit</span> <span class="kn">import</span> <span class="n">userdel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">userdel</span><span class="p">(</span><span class="s1">&#39;myself&#39;</span><span class="p">)</span>  <span class="c1"># userdel myself</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="userdelexecuteexception">
+<h2>UserdelExecuteException<a class="headerlink" href="#userdelexecuteexception" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.api.UserdelExecuteException">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.api.</code><code class="sig-name descname">UserdelExecuteException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/api/user/userdel.html#UserdelExecuteException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Exception class of <code class="docutils literal notranslate"><span class="pre">userdel</span></code> command,         inherited from <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_code</span></em>, <em class="sig-param"><span class="n">stdout</span></em>, <em class="sig-param"><span class="n">stderr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor of class <a class="reference internal" href="../utils/index.html#pysyslimit.utils.ExecuteException" title="pysyslimit.utils.ExecuteException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.utils.ExecuteException</span></code></a>.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>return_code: Return code.</p></li>
+<li><p>stdout: Stdout content.</p></li>
+<li><p>stderr: Stderr content.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.message">
+<em class="property">property </em><code class="sig-name descname">message</code><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.message" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Message of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.return_code">
+<em class="property">property </em><code class="sig-name descname">return_code</code><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.return_code" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Return code of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.stderr">
+<em class="property">property </em><code class="sig-name descname">stderr</code><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.stderr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stderr content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.stdout">
+<em class="property">property </em><code class="sig-name descname">stdout</code><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.stdout" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Stdout content of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.api.UserdelExecuteException.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#pysyslimit.api.UserdelExecuteException.title" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Title of this command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../models/index.html" class="btn btn-neutral float-right" title="pysyslimit.models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../config/meta.html" class="btn btn-neutral float-left" title="pysyslimit.config.meta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, HansBug, PotassiumWings
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+    <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v0.5.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+        <div class="rst-other-versions">
+                <dl>
+                    <dt>Tags</dt>
+                        <dd><a href="index.html">v0.5.0</a></dd>
+                </dl>
+                <dl>
+                    <dt>Branches</dt>
+                        <dd><a href="../../../main/api_doc/api/index.html">main</a></dd>
+                </dl>
+        </div>
+    </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
