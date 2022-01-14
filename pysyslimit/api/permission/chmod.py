@@ -22,7 +22,7 @@ def chmod(path: str, mod, recursive: bool = False):
     """
 
     def _single_chmod(path_):
-        return os.chmod(path_, int(FileAuthority.loads(mod)))
+        return os.chmod(path_, int(FilePermission.loads(mod)))
 
     return _do_recursion(path, _single_chmod, recursive)
 
@@ -45,8 +45,8 @@ def chmod_add(path, mod, recursive: bool = False):
     """
 
     def _single_chmod_add(path_):
-        _origin_mode = FileAuthority.load_from_file(path_)
-        _add_mode = FileAuthority.loads(mod)
+        _origin_mode = FilePermission.load_from_file(path_)
+        _add_mode = FilePermission.loads(mod)
         return chmod(path_, _origin_mode + _add_mode)
 
     return _do_recursion(path, _single_chmod_add, recursive)
@@ -70,8 +70,8 @@ def chmod_del(path, mod, recursive: bool = False):
     """
 
     def _single_chmod_del(path_):
-        _origin_mode = FileAuthority.load_from_file(path_)
-        _del_mode = FileAuthority.loads(mod)
+        _origin_mode = FilePermission.load_from_file(path_)
+        _del_mode = FilePermission.loads(mod)
         return chmod(path_, _origin_mode - _del_mode)
 
     return _do_recursion(path, _single_chmod_del, recursive)

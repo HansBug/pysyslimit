@@ -85,10 +85,10 @@ from pysyslimit import *
 
 if __name__ == "__main__":
     chmod_del("/home/vagrant", "004")
-    _auth = FileAuthority.load_from_file("/home/vagrant")
+    _auth = FilePermission.load_from_file("/home/vagrant")
     print(_auth)
     chmod_add("/home/vagrant", "004")
-    _auth = FileAuthority.load_from_file("/home/vagrant")
+    _auth = FilePermission.load_from_file("/home/vagrant")
     print(_auth)
 
 ```

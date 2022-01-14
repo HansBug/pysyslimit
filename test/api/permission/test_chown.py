@@ -8,7 +8,7 @@ from pysyslimit.models import SystemUser, SystemGroup
 
 
 @pytest.mark.unittest
-class TestApiAuthorityChown:
+class TestApiPermissionChown:
     def test_simple_file(self):
         os.mknod("./tempTest")
         try:

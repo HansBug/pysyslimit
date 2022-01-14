@@ -1,2 +1,2 @@
-from .authority import *
-from .user import *
+from .permission import FilePermission
+from .user import SystemGroup, SystemGroupAttaches, SystemUser

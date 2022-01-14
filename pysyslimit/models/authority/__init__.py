@@ -1,1 +1,0 @@
-from .full import FileAuthority
