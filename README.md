@@ -19,83 +19,94 @@
 [![Contributors](https://img.shields.io/github/contributors/HansBug/pysyslimit)](https://github.com/HansBug/pysyslimit/graphs/contributors)
 [![GitHub license](https://img.shields.io/github/license/HansBug/pysyslimit)](https://github.com/HansBug/pysyslimit/blob/master/LICENSE)
 
+`pysyslimit` is a light-weight library which can manage the permission in linux system.
 
-`pysyslimit`是一款基于linux权限系统的简易封装。
+## Installation
 
-## 安装
-
-### 准备工作
-
-在正式安装之前，首先需要进行一些准备：
-
-* 完整的python环境（推荐使用`python 3.5+`）
-* unix运行环境
-* 【推荐】完整的pip3环境（推荐使用`pip3 18.0`或更高版本）
-
-该包无额外依赖，故不需要进行较多的准备。
-
-### 安装pysyslimit
-
-接下来安装pysyslimit包
+Just install this package with the pip command
 
 ```bash
-git clone -b release https://gitlab.buaaoo.top/oo_course_2019/pysyslimit.git
-cd pysyslimit
-sudo pip3 install .
+pip install pysyslimit
 ```
 
-注意：这步操作需要sudo权限。
+For further information, take a look at the [Installation Page](https://hansbug.github.io/pysyslimit/main/tutorials/installation/index.html).
 
-类似的，卸载pysyslimit
+## Quick Start
 
-```bash
-sudo pip3 uninstall -y pysyslimit
-```
+**Please attention that many function in this library need root permission, so It is strongly recommended to run this with root.**
 
-在安装和卸载的过程中，推荐使用pip进行操作，可以省去很多不必要的麻烦。
-
-## 开始使用
-
-**请注意，该包内的很多操作，都建议在root权限下运行。**
-
-### 查看当前用户与用户组
+### Take a look at who I am
 
 ```python
 from pysyslimit import *
 
 if __name__ == "__main__":
-    print("current user", SystemUser.current())
-    print("current user's group", SystemUser.current().groups)
-    print("current group", SystemGroup.current())
+    print("current user:", SystemUser.current())
+    print("current user's groups:", SystemUser.current().groups)
+    print("current group:", SystemGroup.current())
 
 ```
 
-输出
+The output should be
 
 ```text
-current user <SystemUser vagrant, id: 1000>
-current user's group <SystemGroup vagrant, id: 1000>
-current group <SystemGroup vagrant, id: 1000>
+current user: root
+current user's groups: [<SystemGroup root, id: 0>]
+current group: root
 ```
 
-### 查看并修改文件权限
+### Get and update the permission of files
 
 ```python
 from pysyslimit import *
 
 if __name__ == "__main__":
-    chmod_del("/home/vagrant", "004")
-    _auth = FilePermission.load_from_file("/home/vagrant")
-    print(_auth)
-    chmod_add("/home/vagrant", "004")
-    _auth = FilePermission.load_from_file("/home/vagrant")
-    print(_auth)
+    print(FilePermission.load_from_file("test_file"))
+
+    chmod_del("test_file", "004")
+    print(FilePermission.load_from_file("test_file"))
+
+    chmod_add("test_file", "014")
+    print(FilePermission.load_from_file("test_file"))
 
 ```
 
-输出
+The output shall be
 
 ```text
-rwxr-x--x
-rwxr-xr-x
+rw-rw-r--
+rw-rw----
+rw-rwxr--
 ```
+
+### Do calculation between permissions
+
+```python
+from pysyslimit import *
+
+if __name__ == "__main__":
+    print(FilePermission.loads('463') + FilePermission.loads('615'))
+    print(FilePermission.loads('463') | FilePermission.loads('615'))  # the same as +
+    print(FilePermission.loads('463') - FilePermission.loads('615'))
+    print(FilePermission.loads('463') & FilePermission.loads('615'))
+
+```
+
+The output shall be
+
+```text
+rw-rwxrwx
+rw-rwxrwx
+---rw--w-
+r-------x
+```
+
+
+
+# Contributing
+
+We appreciate all contributions to improve `pysyslimit` ,both logic and system designs. Please refer to CONTRIBUTING.md for more guides.
+
+# License
+
+`pysyslimit` released under the Apache 2.0 license.
