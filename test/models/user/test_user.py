@@ -87,7 +87,3 @@ class TestSystemUser:
 
         assert d[SystemUser.loads('nobody')] == 1
         assert d[SystemUser.loads('root')] == 2
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

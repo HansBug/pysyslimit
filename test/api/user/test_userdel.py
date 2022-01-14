@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import where
 
@@ -28,7 +26,3 @@ class TestApiUserDel:
         mocker.patch.object(where, 'first', return_value=None)
         with pytest.raises(EnvironmentError):
             userdel('this_user_not_exist')
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

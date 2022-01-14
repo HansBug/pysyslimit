@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import where
 
@@ -40,7 +38,3 @@ class TestApiUserAdd:
         mocker.patch.object(where, 'first', return_value=None)
         with pytest.raises(EnvironmentError):
             useradd('newuser4')
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

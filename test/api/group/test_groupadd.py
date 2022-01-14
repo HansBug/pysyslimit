@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import where
 
@@ -39,7 +37,3 @@ class TestApiGroupAdd:
         mocker.patch.object(where, 'first', return_value=None)
         with pytest.raises(EnvironmentError):
             groupadd('newgroup4')
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

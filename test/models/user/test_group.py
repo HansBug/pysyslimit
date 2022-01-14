@@ -90,7 +90,3 @@ class TestSystemGroup:
 
         assert d[SystemGroup.loads('nogroup')] == 1
         assert d[SystemGroup.loads('root')] == 2
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

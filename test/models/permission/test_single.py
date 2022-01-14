@@ -1,5 +1,3 @@
-import os
-
 import pytest
 
 from pysyslimit.models.permission.single import *
@@ -68,7 +66,3 @@ class TestModelsPermissionSingle:
         }
         assert d[FileSinglePermission.loads(6)] == 1
         assert d[FileSinglePermission.loads('r-x')] == 2
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

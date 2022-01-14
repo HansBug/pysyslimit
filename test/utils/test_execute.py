@@ -14,7 +14,3 @@ class TestUtilExecute:
     def test_execute_title(self):
         temp = ExecuteException("return_code", None, None)
         assert not temp.title
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

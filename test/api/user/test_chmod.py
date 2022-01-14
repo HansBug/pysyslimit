@@ -53,7 +53,3 @@ class TestApiUserChmod:
             assert FilePermission.load_from_file('./1/2/3/file') == FilePermission.loads('rwxrwxrwx')
         finally:
             shutil.rmtree('./1')
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

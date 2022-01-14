@@ -1,5 +1,3 @@
-import os
-
 import pytest
 
 from pysyslimit.models.permission.full import FilePermission
@@ -77,7 +75,3 @@ class TestModelsPermissionFull:
         }
         assert d[FilePermission.loads('rwxr-xr--')] == 1
         assert d[FilePermission.loads('---------')] == 3
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])

@@ -57,7 +57,3 @@ class TestApiPermissionChown:
             assert SystemGroup.load_from_file('./1/2/3/file') == SystemGroup.loads('nogroup')
         finally:
             shutil.rmtree('./1', ignore_errors=True)
-
-
-if __name__ == "__main__":
-    pytest.main([os.path.abspath(__file__)])
