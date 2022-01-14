@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pysyslimit.models.permission &mdash; pysyslimit 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pysyslimit.utils" href="../utils/index.html" />
+    <link rel="prev" title="pysyslimit.models" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pysyslimit
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/installation/index.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config/index.html">pysyslimit.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">pysyslimit.api</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">pysyslimit.models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pysyslimit.models.permission</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filesinglepermission">FileSinglePermission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileuserpermission">FileUserPermission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filegrouppermission">FileGroupPermission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileotherpermission">FileOtherPermission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filepermission">FilePermission</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">pysyslimit.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pysyslimit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">pysyslimit.models</a> &raquo;</li>
+        
+      <li>pysyslimit.models.permission</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api_doc/models/permission.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+    
+    
+  <div class="section" id="pysyslimit-models-permission">
+<h1>pysyslimit.models.permission<a class="headerlink" href="#pysyslimit-models-permission" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="filesinglepermission">
+<h2>FileSinglePermission<a class="headerlink" href="#filesinglepermission" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.models.permission.FileSinglePermission">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.models.permission.</code><code class="sig-name descname">FileSinglePermission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">executable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Single permission of the files.
+With read(r), write(w) and execute(x).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, the same as <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__and__">
+<code class="sig-name descname">__and__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__and__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__and__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Get equality of single permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__hash__">
+<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Get hash of single permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__iadd__">
+<code class="sig-name descname">__iadd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__iadd__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__iadd__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__iand__">
+<code class="sig-name descname">__iand__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__iand__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__iand__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">executable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor function.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>readable: Readable or not.</p></li>
+<li><p>writable: Writable or not.</p></li>
+<li><p>executable: Executable or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__int__">
+<code class="sig-name descname">__int__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__int__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__int__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Int format of this permission.
+The same as <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__ior__">
+<code class="sig-name descname">__ior__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__ior__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__ior__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__isub__">
+<code class="sig-name descname">__isub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__isub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__isub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__or__">
+<code class="sig-name descname">__or__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__or__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__or__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__radd__">
+<code class="sig-name descname">__radd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__radd__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__radd__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__rand__">
+<code class="sig-name descname">__rand__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__rand__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__rand__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>String representation format of this permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__ror__">
+<code class="sig-name descname">__ror__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__ror__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__rsub__">
+<code class="sig-name descname">__rsub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__rsub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__rsub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__str__">
+<code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>String format of this permission.
+The same as <code class="docutils literal notranslate"><span class="pre">sign</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.__sub__">
+<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.executable">
+<em class="property">property </em><code class="sig-name descname">executable</code><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.executable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Executable or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.load_by_sign">
+<em class="property">classmethod </em><code class="sig-name descname">load_by_sign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sign</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.load_by_sign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.load_by_sign" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by string sign.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: String sign of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.load_by_value">
+<em class="property">classmethod </em><code class="sig-name descname">load_by_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.load_by_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.load_by_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by int value.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: Int value of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.loads">
+<em class="property">classmethod </em><code class="sig-name descname">loads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/single.html#FileSinglePermission.loads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.loads" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by any types of value.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: Any types of value of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.readable">
+<em class="property">property </em><code class="sig-name descname">readable</code><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.readable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Readable or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.sign">
+<em class="property">property </em><code class="sig-name descname">sign</code><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.sign" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Sign format of this permission.
+Such as <code class="docutils literal notranslate"><span class="pre">rwx</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Int value of current permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FileSinglePermission.writable">
+<em class="property">property </em><code class="sig-name descname">writable</code><a class="headerlink" href="#pysyslimit.models.permission.FileSinglePermission.writable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Writable or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fileuserpermission">
+<h2>FileUserPermission<a class="headerlink" href="#fileuserpermission" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.models.permission.FileUserPermission">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.models.permission.</code><code class="sig-name descname">FileUserPermission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">executable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FileUserPermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileUserPermission" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Single permission of the user part of a file.
+Inherited from <code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.models.permission.single.FileSinglePermission</span></code>.
+With read(r), write(w) and execute(x).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="filegrouppermission">
+<h2>FileGroupPermission<a class="headerlink" href="#filegrouppermission" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.models.permission.FileGroupPermission">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.models.permission.</code><code class="sig-name descname">FileGroupPermission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">executable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FileGroupPermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileGroupPermission" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Single permission of the group part of a file.
+Inherited from <code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.models.permission.single.FileSinglePermission</span></code>.
+With read(r), write(w) and execute(x).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="fileotherpermission">
+<h2>FileOtherPermission<a class="headerlink" href="#fileotherpermission" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.models.permission.FileOtherPermission">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.models.permission.</code><code class="sig-name descname">FileOtherPermission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">writable</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">executable</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FileOtherPermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FileOtherPermission" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Single permission of the other part of a file.
+Inherited from <code class="xref py py-class docutils literal notranslate"><span class="pre">pysyslimit.models.permission.single.FileSinglePermission</span></code>.
+With read(r), write(w) and execute(x).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="filepermission">
+<h2>FilePermission<a class="headerlink" href="#filepermission" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pysyslimit.models.permission.FilePermission">
+<em class="property">class </em><code class="sig-prename descclassname">pysyslimit.models.permission.</code><code class="sig-name descname">FilePermission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_permission</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">group_permission</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">other_permission</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Full file permission class.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, the same as <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__and__">
+<code class="sig-name descname">__and__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__and__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__and__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Get equality of full permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__hash__">
+<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Get hash of full permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__iadd__">
+<code class="sig-name descname">__iadd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__iadd__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__iadd__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__iand__">
+<code class="sig-name descname">__iand__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__iand__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__iand__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_permission</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">group_permission</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">other_permission</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Constructor function.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>user_permission: User permission.</p></li>
+<li><p>group_permission: User group permission.</p></li>
+<li><p>other_permission: Other permission.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__int__">
+<code class="sig-name descname">__int__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__int__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__int__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Int format of this permission.
+The same as <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__ior__">
+<code class="sig-name descname">__ior__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__ior__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__ior__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__isub__">
+<code class="sig-name descname">__isub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__isub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__isub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract, self version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__or__">
+<code class="sig-name descname">__or__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__or__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__or__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__radd__">
+<code class="sig-name descname">__radd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__radd__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__radd__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__rand__">
+<code class="sig-name descname">__rand__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__rand__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__rand__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission intersection, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>String representation format of this permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__ror__">
+<code class="sig-name descname">__ror__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__ror__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Merge permissions, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__rsub__">
+<code class="sig-name descname">__rsub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__rsub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__rsub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract, right version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__str__">
+<code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>String format of this permission.
+The same as <code class="docutils literal notranslate"><span class="pre">sign</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.__sub__">
+<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Permission subtract.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.group">
+<em class="property">property </em><code class="sig-name descname">group</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.group" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>User group permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.load_by_oct_value">
+<em class="property">classmethod </em><code class="sig-name descname">load_by_oct_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">oct_value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.load_by_oct_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.load_by_oct_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by octal value.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: Octal value of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.load_by_sign">
+<em class="property">classmethod </em><code class="sig-name descname">load_by_sign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sign</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.load_by_sign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.load_by_sign" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by string sign.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: String sign of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.load_by_value">
+<em class="property">classmethod </em><code class="sig-name descname">load_by_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.load_by_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.load_by_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by int value.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: Int value of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.load_from_file">
+<em class="property">classmethod </em><code class="sig-name descname">load_from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.load_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.load_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Get file’s permission.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>filename: Name of the file.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.loads">
+<em class="property">classmethod </em><code class="sig-name descname">loads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pysyslimit/models/permission/full.html#FilePermission.loads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.loads" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Load permission by any types of value.</p>
+</dd>
+<dt>Arguments:</dt><dd><ul class="simple">
+<li><p>value: Any types of value of permission.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>permission: Loaded permission object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.oct_value">
+<em class="property">property </em><code class="sig-name descname">oct_value</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.oct_value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Octal tnt value of current permission.
+Such as <code class="docutils literal notranslate"><span class="pre">777</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.other">
+<em class="property">property </em><code class="sig-name descname">other</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.other" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Other permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.sign">
+<em class="property">property </em><code class="sig-name descname">sign</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.sign" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Sign format of this permission.
+Such as <code class="docutils literal notranslate"><span class="pre">rwxrwxrwx</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.user">
+<em class="property">property </em><code class="sig-name descname">user</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.user" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>User permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pysyslimit.models.permission.FilePermission.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#pysyslimit.models.permission.FilePermission.value" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Overview:</dt><dd><p>Int value of current permission.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../utils/index.html" class="btn btn-neutral float-right" title="pysyslimit.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="pysyslimit.models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, HansBug, PotassiumWings
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+    <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+        <div class="rst-other-versions">
+                <dl>
+                    <dt>Branches</dt>
+                        <dd><a href="permission.html">main</a></dd>
+                </dl>
+        </div>
+    </div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

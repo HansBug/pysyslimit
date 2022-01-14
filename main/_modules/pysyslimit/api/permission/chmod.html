@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pysyslimit.api.authority.chmod &mdash; pysyslimit 0.4.0 documentation</title>
+  <title>pysyslimit.api.permission.chmod &mdash; pysyslimit 0.4.0 documentation</title>
   
 
   
@@ -91,6 +91,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/config/index.html">pysyslimit.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/api/index.html">pysyslimit.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/models/index.html">pysyslimit.models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api_doc/utils/index.html">pysyslimit.utils</a></li>
 </ul>
 
@@ -139,7 +140,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>pysyslimit.api.authority.chmod</li>
+      <li>pysyslimit.api.permission.chmod</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,7 +157,7 @@
             
     
     
-  <h1>Source code for pysyslimit.api.authority.chmod</h1><div class="highlight"><pre>
+  <h1>Source code for pysyslimit.api.permission.chmod</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">..base</span> <span class="kn">import</span> <span class="n">_do_recursion</span>
@@ -181,7 +182,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_single_chmod</span><span class="p">(</span><span class="n">path_</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">FileAuthority</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">FilePermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)))</span>
 
     <span class="k">return</span> <span class="n">_do_recursion</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">_single_chmod</span><span class="p">,</span> <span class="n">recursive</span><span class="p">)</span></div>
 
@@ -204,8 +205,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_single_chmod_add</span><span class="p">(</span><span class="n">path_</span><span class="p">):</span>
-        <span class="n">_origin_mode</span> <span class="o">=</span> <span class="n">FileAuthority</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
-        <span class="n">_add_mode</span> <span class="o">=</span> <span class="n">FileAuthority</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+        <span class="n">_origin_mode</span> <span class="o">=</span> <span class="n">FilePermission</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+        <span class="n">_add_mode</span> <span class="o">=</span> <span class="n">FilePermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">chmod</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="n">_origin_mode</span> <span class="o">+</span> <span class="n">_add_mode</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_do_recursion</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">_single_chmod_add</span><span class="p">,</span> <span class="n">recursive</span><span class="p">)</span></div>
@@ -229,8 +230,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_single_chmod_del</span><span class="p">(</span><span class="n">path_</span><span class="p">):</span>
-        <span class="n">_origin_mode</span> <span class="o">=</span> <span class="n">FileAuthority</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
-        <span class="n">_del_mode</span> <span class="o">=</span> <span class="n">FileAuthority</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+        <span class="n">_origin_mode</span> <span class="o">=</span> <span class="n">FilePermission</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">path_</span><span class="p">)</span>
+        <span class="n">_del_mode</span> <span class="o">=</span> <span class="n">FilePermission</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">chmod</span><span class="p">(</span><span class="n">path_</span><span class="p">,</span> <span class="n">_origin_mode</span> <span class="o">-</span> <span class="n">_del_mode</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_do_recursion</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">_single_chmod_del</span><span class="p">,</span> <span class="n">recursive</span><span class="p">)</span></div>
