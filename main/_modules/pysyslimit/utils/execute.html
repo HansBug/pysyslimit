@@ -91,6 +91,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api_doc/config/index.html">pysyslimit.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api_doc/api/index.html">pysyslimit.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_doc/utils/index.html">pysyslimit.utils</a></li>
 </ul>
 
             
@@ -161,75 +162,90 @@
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
 
-<span class="k">class</span> <span class="nc">ExecuteException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="ExecuteException"><a class="viewcode-back" href="../../../api_doc/utils/index.html#pysyslimit.api.ExecuteException">[docs]</a><span class="k">class</span> <span class="nc">ExecuteException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    程序执行异常</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Error when the command line execute failed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_code</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">):</span>
+<div class="viewcode-block" id="ExecuteException.__init__"><a class="viewcode-back" href="../../../api_doc/utils/index.html#pysyslimit.api.ExecuteException.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_code</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        构造函数</span>
-<span class="sd">        :param return_code: 返回值</span>
-<span class="sd">        :param stdout: 标准输出</span>
-<span class="sd">        :param stderr: 标准异常</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Constructor of class :class:`pysyslimit.utils.ExecuteException`.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            - return_code: Return code.</span>
+<span class="sd">            - stdout: Stdout content.</span>
+<span class="sd">            - stderr: Stderr content.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">return_code</span> <span class="o">!=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__return_code</span> <span class="o">=</span> <span class="n">return_code</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__stdout</span> <span class="o">=</span> <span class="n">stdout</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__stderr</span> <span class="o">=</span> <span class="n">stderr</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">return_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        获取返回值</span>
-<span class="sd">        :return: 返回值</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Return code of this command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__return_code</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stdout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        获取标准输出</span>
-<span class="sd">        :return: 标准输出</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Stdout content of this command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stdout</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stderr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        获取标准异常</span>
-<span class="sd">        :return: 标准异常</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Stderr content of this command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stderr</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        获取异常信息</span>
-<span class="sd">        :return: 异常信息</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Message of this command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stderr</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stdout</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        返回异常标题</span>
-<span class="sd">        :return: 异常标题</span>
+<span class="sd">        Overview:</span>
+<span class="sd">            Title of this command.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span>
         <span class="k">if</span> <span class="n">_message</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\r\n]+&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_message</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="cmd_execute"><a class="viewcode-back" href="../../../api_doc/utils/index.html#pysyslimit.api.cmd_execute">[docs]</a><span class="k">def</span> <span class="nf">cmd_execute</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    执行指令</span>
-<span class="sd">    :param args: 命令行参数</span>
-<span class="sd">    :param env: 环境变量</span>
-<span class="sd">    :param encoding: 编码格式</span>
-<span class="sd">    :return: return_code, stdout, stderr</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Execute one command line.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        - args: Command line arguments.</span>
+<span class="sd">        - env: Environment variables.</span>
+<span class="sd">        - encoding: Encoding format.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        - tuple: A tuple which is like ``(return_code, stdout, stderr)``.</span>
+
+<span class="sd">    Examples::</span>
+<span class="sd">        &gt;&gt;&gt; from pysyslimit.utils import cmd_execute</span>
+<span class="sd">        &gt;&gt;&gt; cmd_execute([&#39;echo&#39;, &#39;233&#39;])</span>
+<span class="sd">        (0, &#39;233\\n&#39;, &#39;&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_encoding</span> <span class="o">=</span> <span class="n">encoding</span> <span class="ow">or</span> <span class="s2">&quot;utf8&quot;</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">env</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span>
@@ -244,24 +260,34 @@
     <span class="n">_stdout</span> <span class="o">=</span> <span class="n">_stdout_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">_encoding</span><span class="p">)</span>
     <span class="n">_stderr</span> <span class="o">=</span> <span class="n">_stderr_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">_encoding</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">_process</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span>
+    <span class="k">return</span> <span class="n">_process</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span></div>
 
 
-<span class="k">def</span> <span class="nf">execute_process</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="execute_process"><a class="viewcode-back" href="../../../api_doc/utils/index.html#pysyslimit.api.execute_process">[docs]</a><span class="k">def</span> <span class="nf">execute_process</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    执行指令（遇到非零返回值会直接抛出异常）</span>
-<span class="sd">    :param args: 命令行参数</span>
-<span class="sd">    :param env: 环境变量</span>
-<span class="sd">    :param encoding: 编码格式</span>
-<span class="sd">    :param cls: 异常类格式</span>
-<span class="sd">    :return: return_code, stdout, stderr</span>
+<span class="sd">    Overview:</span>
+<span class="sd">        Execute process, raise exception when return code is not 0.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        - args: Command line arguments.</span>
+<span class="sd">        - env: Environment variables.</span>
+<span class="sd">        - encoding: Encoding format.</span>
+<span class="sd">        - cls: Class of exception.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        - tuple: A tuple which is like ``(return_code, stdout, stderr)``.</span>
+
+<span class="sd">    Examples::</span>
+<span class="sd">        &gt;&gt;&gt; from pysyslimit.utils import execute_process</span>
+<span class="sd">        &gt;&gt;&gt; execute_process([&#39;echo&#39;, &#39;233&#39;])</span>
+<span class="sd">        (0, &#39;233\\n&#39;, &#39;&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_cls</span> <span class="o">=</span> <span class="bp">cls</span> <span class="ow">or</span> <span class="n">ExecuteException</span>
-    <span class="n">_return_code</span><span class="p">,</span> <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="n">_return_code</span><span class="p">,</span> <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span> <span class="o">=</span> <span class="n">cmd_execute</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">_return_code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_return_code</span><span class="p">,</span> <span class="n">_stdout</span><span class="p">,</span> <span class="n">_stderr</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">_cls</span><span class="p">(</span><span class="n">return_code</span><span class="o">=</span><span class="n">_return_code</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">_stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">_stderr</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">_cls</span><span class="p">(</span><span class="n">return_code</span><span class="o">=</span><span class="n">_return_code</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">_stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">_stderr</span><span class="p">)</span></div>
 </pre></div>
 
 
