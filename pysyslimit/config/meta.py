@@ -1,10 +1,10 @@
 """
 Overview:
-    Meta information for pysystem package.
+    Meta information for pysyslimit package.
 """
 
-#: Title of this project (should be `pysystem`).
-__TITLE__ = "pysystem"
+#: Title of this project (should be `pysyslimit`).
+__TITLE__ = "pysyslimit"
 
 #: Version of this project.
 __VERSION__ = "0.4.0"

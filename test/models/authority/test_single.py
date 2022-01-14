@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from pysystem.models.authority.single import *
+from pysyslimit.models.authority.single import *
 
 
 @pytest.mark.unittest

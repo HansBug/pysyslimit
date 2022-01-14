@@ -2,8 +2,8 @@ import shutil
 
 import pytest
 
-from pysystem.api.authority.chmod import *
-from pysystem.models import FileAuthority
+from pysyslimit.api.authority.chmod import *
+from pysyslimit.models import FileAuthority
 
 
 @pytest.mark.unittest

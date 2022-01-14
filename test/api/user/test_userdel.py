@@ -3,7 +3,7 @@ import os
 import pytest
 import where
 
-from pysystem.api import useradd, userdel, UserdelExecuteException
+from pysyslimit.api import useradd, userdel, UserdelExecuteException
 
 
 @pytest.mark.unittest

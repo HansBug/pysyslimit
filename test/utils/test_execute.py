@@ -1,6 +1,6 @@
 import pytest
 
-from pysystem.utils.execute import *
+from pysyslimit.utils.execute import *
 
 
 @pytest.mark.unittest

@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from pysystem.models.authority.full import FileAuthority
+from pysyslimit.models.authority.full import FileAuthority
 
 
 @pytest.mark.unittest

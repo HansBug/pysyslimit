@@ -1,6 +1,6 @@
-# pysystem
+# pysyslimit
 
-`pysystem`是一款基于linux权限系统的简易封装。
+`pysyslimit`是一款基于linux权限系统的简易封装。
 
 ## 安装
 
@@ -14,22 +14,22 @@
 
 该包无额外依赖，故不需要进行较多的准备。
 
-### 安装pysystem
+### 安装pysyslimit
 
-接下来安装pysystem包
+接下来安装pysyslimit包
 
 ```bash
-git clone -b release https://gitlab.buaaoo.top/oo_course_2019/pysystem.git
-cd pysystem
+git clone -b release https://gitlab.buaaoo.top/oo_course_2019/pysyslimit.git
+cd pysyslimit
 sudo pip3 install .
 ```
 
 注意：这步操作需要sudo权限。
 
-类似的，卸载pysystem
+类似的，卸载pysyslimit
 
 ```bash
-sudo pip3 uninstall -y pysystem
+sudo pip3 uninstall -y pysyslimit
 ```
 
 在安装和卸载的过程中，推荐使用pip进行操作，可以省去很多不必要的麻烦。
@@ -41,7 +41,7 @@ sudo pip3 uninstall -y pysystem
 ### 查看当前用户与用户组
 
 ```python
-from pysystem import *
+from pysyslimit import *
 
 if __name__ == "__main__":
     print("current user", SystemUser.current())
@@ -61,7 +61,7 @@ current group <SystemGroup vagrant, id: 1000>
 ### 查看并修改文件权限
 
 ```python
-from pysystem import *
+from pysyslimit import *
 
 if __name__ == "__main__":
     chmod_del("/home/vagrant", "004")

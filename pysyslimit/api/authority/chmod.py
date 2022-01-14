@@ -1,7 +1,7 @@
 import os
 
-from pysystem.api.base import do_recursive
-from pysystem.models import *
+from pysyslimit.api.base import do_recursive
+from pysyslimit.models import *
 
 
 def chmod(path, mod, recursive: bool = False):

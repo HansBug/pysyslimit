@@ -4,8 +4,8 @@ import pwd
 
 import pytest
 
-from pysystem.models.user.group import SystemGroup
-from pysystem.models.user.user import SystemUser
+from pysyslimit.models.user.group import SystemGroup
+from pysyslimit.models.user.user import SystemUser
 
 
 # noinspection DuplicatedCode

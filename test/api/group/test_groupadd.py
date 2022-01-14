@@ -3,7 +3,7 @@ import os
 import pytest
 import where
 
-from pysystem.api import groupadd, GroupaddExecuteException, groupdel
+from pysyslimit.api import groupadd, GroupaddExecuteException, groupdel
 
 
 @pytest.mark.unittest

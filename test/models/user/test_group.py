@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from pysystem.models import SystemGroup
+from pysyslimit.models import SystemGroup
 
 
 @pytest.mark.unittest

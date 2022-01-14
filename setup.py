@@ -5,7 +5,7 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
-_package_name = "pysystem"
+_package_name = "pysyslimit"
 
 here = os.path.abspath(os.path.dirname(__file__))
 meta = {}
@@ -43,7 +43,7 @@ setup(
     author_email=meta['__AUTHOR_EMAIL__'],
     license='Apache License, Version 2.0',
     keywords='Python library which can manage linux permissions.',
-    url='https://github.com/pysystem-dev/pysystem',
+    url='https://github.com/pysyslimit-dev/pysyslimit',
 
     # environment
     python_requires=">=3.6",

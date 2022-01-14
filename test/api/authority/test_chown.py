@@ -3,8 +3,8 @@ import shutil
 
 import pytest
 
-from pysystem.api.user.chown import chown
-from pysystem.models import SystemUser, SystemGroup
+from pysyslimit.api.user.chown import chown
+from pysyslimit.models import SystemUser, SystemGroup
 
 
 @pytest.mark.unittest

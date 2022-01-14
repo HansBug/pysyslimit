@@ -2,7 +2,7 @@
 
 DOC_DIR  := ./docs
 TEST_DIR := ./test
-SRC_DIR  := ./pysystem
+SRC_DIR  := ./pysyslimit
 
 RANGE_DIR      ?= .
 RANGE_TEST_DIR := ${TEST_DIR}/${RANGE_DIR}
