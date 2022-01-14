@@ -5,16 +5,21 @@ import subprocess
 
 class ExecuteException(Exception):
     """
-    程序执行异常
+    Overview:
+        Error when the command line execute failed.
     """
 
     def __init__(self, return_code, stdout, stderr):
         """
-        构造函数
-        :param return_code: 返回值
-        :param stdout: 标准输出
-        :param stderr: 标准异常
+        Overview:
+            Constructor of class :class:`pysyslimit.utils.ExecuteException`.
+
+        Arguments:
+            - return_code: Return code.
+            - stdout: Stdout content.
+            - stderr: Stderr content.
         """
+        assert return_code != 0
         self.__return_code = return_code
         self.__stdout = stdout
         self.__stderr = stderr
@@ -23,40 +28,40 @@ class ExecuteException(Exception):
     @property
     def return_code(self):
         """
-        获取返回值
-        :return: 返回值
+        Overview:
+            Return code of this command.
         """
         return self.__return_code
 
     @property
     def stdout(self):
         """
-        获取标准输出
-        :return: 标准输出
+        Overview:
+            Stdout content of this command.
         """
         return self.__stdout
 
     @property
     def stderr(self):
         """
-        获取标准异常
-        :return: 标准异常
+        Overview:
+            Stderr content of this command.
         """
         return self.__stderr
 
     @property
     def message(self):
         """
-        获取异常信息
-        :return: 异常信息
+        Overview:
+            Message of this command.
         """
         return self.__stderr or self.__stdout
 
     @property
     def title(self):
         """
-        返回异常标题
-        :return: 异常标题
+        Overview:
+            Title of this command.
         """
         _message = self.message
         if _message:
@@ -65,13 +70,23 @@ class ExecuteException(Exception):
             return None
 
 
-def execute(args, env=None, encoding=None):
+def cmd_execute(args, env=None, encoding=None):
     """
-    执行指令
-    :param args: 命令行参数
-    :param env: 环境变量
-    :param encoding: 编码格式
-    :return: return_code, stdout, stderr
+    Overview:
+        Execute one command line.
+
+    Arguments:
+        - args: Command line arguments.
+        - env: Environment variables.
+        - encoding: Encoding format.
+
+    Returns:
+        - tuple: A tuple which is like ``(return_code, stdout, stderr)``.
+
+    Examples::
+        >>> from pysyslimit.utils import cmd_execute
+        >>> cmd_execute(['echo', '233'])
+        (0, '233\\n', '')
     """
     _encoding = encoding or "utf8"
     env = env or os.environ
@@ -91,15 +106,25 @@ def execute(args, env=None, encoding=None):
 
 def execute_process(args, env=None, encoding=None, cls=None):
     """
-    执行指令（遇到非零返回值会直接抛出异常）
-    :param args: 命令行参数
-    :param env: 环境变量
-    :param encoding: 编码格式
-    :param cls: 异常类格式
-    :return: return_code, stdout, stderr
+    Overview:
+        Execute process, raise exception when return code is not 0.
+
+    Arguments:
+        - args: Command line arguments.
+        - env: Environment variables.
+        - encoding: Encoding format.
+        - cls: Class of exception.
+
+    Returns:
+        - tuple: A tuple which is like ``(return_code, stdout, stderr)``.
+
+    Examples::
+        >>> from pysyslimit.utils import execute_process
+        >>> execute_process(['echo', '233'])
+        (0, '233\\n', '')
     """
     _cls = cls or ExecuteException
-    _return_code, _stdout, _stderr = execute(args=args, env=env, encoding=encoding)
+    _return_code, _stdout, _stderr = cmd_execute(args=args, env=env, encoding=encoding)
     if _return_code == 0:
         return _return_code, _stdout, _stderr
     else:

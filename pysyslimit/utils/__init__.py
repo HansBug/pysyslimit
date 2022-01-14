@@ -1,1 +1,1 @@
-from .execute import execute, execute_process, ExecuteException
+from .execute import cmd_execute, execute_process, ExecuteException
