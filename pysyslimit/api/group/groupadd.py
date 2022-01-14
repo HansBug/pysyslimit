@@ -6,7 +6,9 @@ from ...utils import *
 
 class GroupaddExecuteException(ExecuteException):
     """
-    groupadd指令执行异常类
+    Overview:
+        Exception class of ``groupadd`` command, \
+        inherited from :class:`pysyslimit.utils.ExecuteException`.
     """
     pass
 
@@ -19,22 +21,31 @@ def groupadd(
         safe=False
 ):
     """
-    groupadd命令
-    :param group_name: 组名
-    :param force: 强制创建
-    :param gid: 组id
-    :param non_unique: 运行不唯一id
-    :param password: 组密码
-    :param system: 创建系统组
-    :param chroot_dir: root入口点路径
-    :param extra_users: 额外用户数据库
-    :param safe: 安全模式（出错不抛出异常）
-    :return: 创建的组对象
+    Overview:
+        Create a new group.
+    
+    Arguments:
+        - group_name: Name of the new group.
+        - force: Foce create this group.
+        - gid: Gid of this group.
+        - non_unique: Not unique group.
+        - password: Password of the group.
+        - system: Create as system-leveled group.
+        - chroot_dir: Root entry directory.
+        - extra_users: Use extra user database.
+        - safe: Safe mode (no error information when error)
+
+    Returns:
+        - group: Created group object.
+
+    Examples::
+        >>> from pysyslimit import groupadd
+        >>> groupadd('mygroup')  # groupadd mygroup
     """
-    groupadd_exec = where.first('groupadd')
-    if not groupadd_exec:
+    _groupadd_cmd = where.first('groupadd')
+    if not _groupadd_cmd:
         raise EnvironmentError('No groupadd executable found.')
-    _args = [groupadd_exec]
+    _args = [_groupadd_cmd]
 
     if force:
         _args += ["--force"]

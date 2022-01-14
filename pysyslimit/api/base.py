@@ -1,7 +1,7 @@
 import os
 
 
-def do_recursive(path, func, recursive):
+def _do_recursion(path, func, recursive):
     if recursive and os.path.isdir(path):
         for _curdir, _subdirs, _files in os.walk(path):
             func(_curdir)

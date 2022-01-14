@@ -5,7 +5,9 @@ from ...utils import *
 
 class GroupdelExecuteException(ExecuteException):
     """
-    groupdel指令执行异常类
+    Overview:
+        Exception class of ``groupdel`` command, \
+        inherited from :class:`pysyslimit.utils.ExecuteException`.
     """
     pass
 
@@ -16,17 +18,26 @@ def groupdel(
         safe=False
 ):
     """
-    groupdel命令
-    :param group_name: 组名
-    :param chroot_dir: root入口点路径
-    :param force: 强制创建
-    :param safe: 安全模式（出错不抛出异常）
-    :return: 是否删除成功
+    Overview:
+        Delete an existing group.
+    
+    Arguments:
+        - group_name: Name of the group.
+        - chroot_dir: Root entry directory.
+        - force: Force delete.
+        - safe: Safe mode (no error information when error)
+
+    Returns:
+        - success: Delete success or not.
+
+    Examples::
+        >>> from pysyslimit import groupdel
+        >>> groupdel('mygroup')  # groupdel mygroup
     """
-    groupdel_exec = where.first('groupdel')
-    if not groupdel_exec:
+    _groupdel_cmd = where.first('groupdel')
+    if not _groupdel_cmd:
         raise EnvironmentError('No groupdel executable found.')
-    _args = [groupdel_exec]
+    _args = [_groupdel_cmd]
 
     if chroot_dir:
         _args += ["--chroot_dir", chroot_dir]

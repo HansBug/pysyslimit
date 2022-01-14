@@ -1,31 +1,47 @@
 import os
 
-from pysyslimit.api.base import do_recursive
-from pysyslimit.models import *
+from ..base import _do_recursion
+from ...models import *
 
 
-def chmod(path, mod, recursive: bool = False):
+def chmod(path: str, mod, recursive: bool = False):
     """
-    设置文件权限
-    :param path: 文件路径
-    :param mod: 权限
-    :param recursive: apply to all recursive paths
-    :return: None
+    Overview:
+        Set the permission of file.
+
+    Arguments:
+        - path (:obj:`str`): Path of the file going to set permission.
+        - mod (:obj:`object`): Permission information object.
+        - recursive (:obj:`bool`): Recursively set the subdirectories or not, \
+            default is ``False`` which means only apply to the current file.
+
+    Examples::
+        >>> from pysyslimit import chmod
+        >>> chmod('my_file', '777')  # chmod 777 my_file
+        >>> chmod('my_dir', '777', recursive=True)  # chmod -R 777 my_dir
     """
 
     def _single_chmod(path_):
         return os.chmod(path_, int(FileAuthority.loads(mod)))
 
-    return do_recursive(path, _single_chmod, recursive)
+    return _do_recursion(path, _single_chmod, recursive)
 
 
 def chmod_add(path, mod, recursive: bool = False):
     """
-    权限增加
-    :param path: 文件路径
-    :param mod: 权限
-    :param recursive: apply to all recursive paths
-    :return: None
+    Overview:
+        Append the permission of file.
+
+    Arguments:
+        - path (:obj:`str`): Path of the file going to append permission.
+        - mod (:obj:`object`): Permission information object.
+        - recursive (:obj:`bool`): Recursively set the subdirectories or not, \
+            default is ``False`` which means only apply to the current file.
+
+    Examples::
+        >>> from pysyslimit import chmod_add
+        >>> chmod_add('my_file', '600')  # chmod +600 my_file
+        >>> chmod_add('my_dur', '600', recursive=True)  # chmod -R +600 my_dir
     """
 
     def _single_chmod_add(path_):
@@ -33,16 +49,24 @@ def chmod_add(path, mod, recursive: bool = False):
         _add_mode = FileAuthority.loads(mod)
         return chmod(path_, _origin_mode + _add_mode)
 
-    return do_recursive(path, _single_chmod_add, recursive)
+    return _do_recursion(path, _single_chmod_add, recursive)
 
 
 def chmod_del(path, mod, recursive: bool = False):
     """
-    权限删除
-    :param path: 文件路径
-    :param mod: 权限
-    :param recursive: apply to all recursive paths
-    :return: None
+    Overview:
+        Remove the permission of file.
+
+    Arguments:
+        - path (:obj:`str`): Path of the file going to remove permission.
+        - mod (:obj:`object`): Permission information object.
+        - recursive (:obj:`bool`): Recursively set the subdirectories or not, \
+            default is ``False`` which means only apply to the current file.
+
+    Examples::
+        >>> from pysyslimit import chmod_del
+        >>> chmod_del('my_file', '600')  # chmod -600 my_file
+        >>> chmod_del('my_dur', '600', recursive=True)  # chmod -R -600 my_dir
     """
 
     def _single_chmod_del(path_):
@@ -50,4 +74,4 @@ def chmod_del(path, mod, recursive: bool = False):
         _del_mode = FileAuthority.loads(mod)
         return chmod(path_, _origin_mode - _del_mode)
 
-    return do_recursive(path, _single_chmod_del, recursive)
+    return _do_recursion(path, _single_chmod_del, recursive)

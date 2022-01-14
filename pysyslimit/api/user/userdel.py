@@ -5,7 +5,9 @@ from ...utils import *
 
 class UserdelExecuteException(ExecuteException):
     """
-    userdel指令执行异常类
+    Overview:
+        Exception class of ``userdel`` command, \
+        inherited from :class:`pysyslimit.utils.ExecuteException`.
     """
     pass
 
@@ -17,19 +19,28 @@ def userdel(
         safe=False
 ):
     """
-    删除用户
-    :param user_name: 用户名
-    :param force: 强制删除
-    :param remove_dir: 删除用户路径
-    :param chroot_dir: root入口点路径
-    :param selinux_user: 删除映射用户
-    :param safe: 安全模式（出错不抛出异常）
-    :return: 是否成功删除
+    Overview:
+        Delete an existing user.
+    
+    Arguments:
+        - user_name: Name of the user.
+        - force: Force delete.
+        - remove_dir: Remove the directory of user or not.
+        - chroot_dir: Root entry path.
+        - selinux_user: Remove the mapping user.
+        - safe: Safe mode (no error information when error)
+
+    Returns:
+        - success: Delete success or not.
+
+    Examples::
+        >>> from pysyslimit import userdel
+        >>> userdel('myself')  # userdel myself
     """
-    userdel_exec = where.first('userdel')
-    if not userdel_exec:
+    _userdel_cmd = where.first('userdel')
+    if not _userdel_cmd:
         raise EnvironmentError('No userdel executable found.')
-    _args = [userdel_exec]
+    _args = [_userdel_cmd]
 
     if force:  # 强制删除
         _args += ["--force"]

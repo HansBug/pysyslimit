@@ -6,7 +6,9 @@ from ...utils import *
 
 class UseraddExecuteException(ExecuteException):
     """
-    useradd指令执行异常类
+    Overview:
+        Exception class of ``useradd`` command, \
+        inherited from :class:`pysyslimit.utils.ExecuteException`.
     """
     pass
 
@@ -21,31 +23,40 @@ def useradd(
         safe=False
 ):
     """
-    添加用户
-    :param user_name: 用户名
-    :param uid: 指定用户id
-    :param primary_group: 用户组
-    :param groups: 用户附加组
-    :param password: 用户密码
-    :param system: 创建系统用户
-    :param comment: 用户标签
-    :param user_group: 创建同名用户组
-    :param no_user_group: 不创建同名用户组
-    :param create_home: 创建同名home路径
-    :param no_create_home: 不创建同名home路径
-    :param home_dir: home路径地址
-    :param base_dir: 用户base路径地址
-    :param shell: 用户shell
-    :param chroot_dir: root入口点路径
-    :param selinux_user: 删除映射用户
-    :param extra_users: 额外用户数据库
-    :param safe: 安全模式（出错不抛出异常）
-    :return: 创建的用户对象
+    Overview:
+        Create a new user.
+    
+    Arguments:
+        - user_name: Name of the user.
+        - uid: Uid of the user.
+        - primary_group: Primary group of the user.
+        - groups: Append groups of the user.
+        - password: Password of the user.
+        - system: Create as system user or not.
+        - comment: Comment information of the user.
+        - user_group: Create a user group with the same name or not.
+        - no_user_group: Do not create a user group.
+        - create_home: Create a home path.
+        - no_create_home: Do not create home path.
+        - home_dir: Directory of the home path.
+        - base_dir: Base directory of the user.
+        - shell: User's shell.
+        - chroot_dir: User's chroot path.
+        - selinux_user: Remove linux mapping user.
+        - extra_users: Use extra user database.
+        - safe: Safe mode (no error message when error)
+
+    Returns:
+        - user: Created user object.
+
+    Examples::
+        >>> from pysyslimit import useradd
+        >>> useradd("myself")  # useradd myself
     """
-    useradd_exec = where.first('useradd')
-    if not useradd_exec:
+    _useradd_cmd = where.first('useradd')
+    if not _useradd_cmd:
         raise EnvironmentError('No useradd executable found.')
-    _args = [useradd_exec]
+    _args = [_useradd_cmd]
 
     if system:  # 创建系统账户
         _args += ["--system"]
